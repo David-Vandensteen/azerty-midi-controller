@@ -1,0 +1,32 @@
+{
+  "name": "remote-analog-lab",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "master": "node src/index.js -m master",
+    "slave": "node src/index.js -m slave",
+    "lint": "eslint src"
+  },
+  "author": "David Vandensteen <dvandensteen@gmail.com>",
+  "license": "MIT",
+  "imports": {
+    "#src/*": "./src/*.js"
+  },
+  "dependencies": {
+    "app-root-path": "^3.1.0",
+    "arg": "^5.0.2",
+    "chalk": "^5.3.0",
+    "fs-extra": "^11.1.1",
+    "remote-midi": "git@github.com:David-Vandensteen/remote-midi.git#release/0.0.1",
+    "yaml": "^2.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.28.1"
+  }
+}
