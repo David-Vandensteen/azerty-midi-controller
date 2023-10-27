@@ -1,27 +1,16 @@
 port: 8080
 
 mapping:
-  # - sequence: '&'
-  #   type: analog
-  #   increment: 1
-  #   controller: 3
-  #   channel: 0
-
-  # - sequence: 'a'
-  #   type: analog
-  #   increment: -1
-  #   controller: 3
-  #   channel: 0
   - sequence: '&'
     type: analog
     increment: 1
-    controller: 16
+    controller: 3
     channel: 0
 
   - sequence: 'a'
     type: analog
     increment: -1
-    controller: 16
+    controller: 3
     channel: 0
 
   - sequence: 'é'
@@ -253,13 +242,13 @@ mapping:
     channel: 0
 
   # Transport play button and stop button
-  - sequence: ' '
-    type: digital
-    controller:
-      cycle:
-        - 55
-        - 56
-    channel: 0
+  # - sequence: ' '
+  #   type: digital
+  #   controller:
+  #     cycle:
+  #       - 55
+  #       - 56
+  #   channel: 0
 
     # Right arrow
   - sequence: '\u001b[C'
