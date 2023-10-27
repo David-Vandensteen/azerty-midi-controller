@@ -1,7 +1,7 @@
-import { rMidiClient, TCPMessage } from 'remote-midi';
+import { RemoteMidiSlave, TCPMessage } from 'remote-midi';
 import { MIDIControllerStore } from '#src/lib/midi-controller-store';
 import { log } from '#src/lib/log';
-import { KeyboardService } from '#src/model/mcc-1/service/keyboard';
+import { KeyboardService } from '#src/service/keyboard';
 
 const midiControllerState = MIDIControllerStore.getInstance();
 
@@ -13,9 +13,9 @@ const handleMidiData = (dataBuffer) => {
 };
 
 const clientStart = (host, port, keyMappingConfig) => {
-  const midiClient = rMidiClient(host, port);
+  const midiClient = new RemoteMidiSlave(host, port);
   midiClient.on('data', handleMidiData);
-  midiClient.start();
+  midiClient.connect();
   const key = new KeyboardService({
     config: keyMappingConfig,
     midiSender: midiClient.send.bind(midiClient),

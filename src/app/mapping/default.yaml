@@ -1,0 +1,269 @@
+key:
+  - sequence: '&'
+    type: analog
+    increment: 1
+    controller: 3
+    channel: 0
+
+  - sequence: 'a'
+    type: analog
+    increment: -1
+    controller: 3
+    channel: 0
+
+  - sequence: 'é'
+    type: analog
+    increment: 1
+    controller: 9
+    channel: 0
+
+  - sequence: 'z'
+    type: analog
+    increment: -1
+    controller: 9
+    channel: 0
+
+  - sequence: '"'
+    type: analog
+    increment: 1
+    controller: 14
+    channel: 0
+
+  - sequence: 'e'
+    type: analog
+    increment: -1
+    controller: 14
+    channel: 0
+
+  - sequence: "'"
+    type: analog
+    increment: 1
+    controller: 15
+    channel: 0
+
+  - sequence: 'r'
+    type: analog
+    increment: -1
+    controller: 15
+    channel: 0
+
+  - sequence: '('
+    type: analog
+    increment: 1
+    controller: 22
+    channel: 0
+
+  - sequence: 't'
+    type: analog
+    increment: -1
+    controller: 22
+    channel: 0
+
+  - sequence: '-'
+    type: analog
+    increment: 1
+    controller: 23
+    channel: 0
+
+  - sequence: 'y'
+    type: analog
+    increment: -1
+    controller: 23
+    channel: 0
+
+  - sequence: 'è'
+    type: analog
+    increment: 1
+    controller: 24
+    channel: 0
+
+  - sequence: 'u'
+    type: analog
+    increment: -1
+    controller: 24
+    channel: 0
+
+  - sequence: '_'
+    type: analog
+    increment: 1
+    controller: 25
+    channel: 0
+
+  - sequence: 'i'
+    type: analog
+    increment: -1
+    controller: 25
+    channel: 0
+
+  - sequence: 'ç'
+    type: analog
+    increment: 1
+    controller: 26
+    channel: 0
+
+  - sequence: 'o'
+    type: analog
+    increment: -1
+    controller: 26
+    channel: 0
+
+  - sequence: 'à'
+    type: analog
+    increment: 1
+    controller: 27
+    channel: 0
+
+  - sequence: 'p'
+    type: analog
+    increment: -1
+    controller: 27
+    channel: 0
+
+  - sequence: 'q'
+    type: analog
+    increment: 1
+    controller: 28
+    channel: 0
+
+  - sequence: 'w'
+    type: analog
+    increment: -1
+    controller: 28
+    channel: 0
+
+  - sequence: 's'
+    type: analog
+    increment: 1
+    controller: 29
+    channel: 0
+
+  - sequence: 'x'
+    type: analog
+    increment: -1
+    controller: 29
+    channel: 0
+
+  - sequence: 'd'
+    type: analog
+    increment: 1
+    controller: 30
+    channel: 0
+
+  - sequence: 'c'
+    type: analog
+    increment: -1
+    controller: 31
+    channel: 0
+
+  - sequence: 'f'
+    type: analog
+    increment: 1
+    controller: 35
+    channel: 0
+
+  - sequence: 'v'
+    type: analog
+    increment: -1
+    controller: 35
+    channel: 0
+
+  - sequence: 'g'
+    type: analog
+    increment: 1
+    controller: 41
+    channel: 0
+
+  - sequence: 'b'
+    type: analog
+    increment: -1
+    controller: 41
+    channel: 0
+
+  - sequence: 'h'
+    type: analog
+    increment: 1
+    controller: 46
+    channel: 0
+
+  - sequence: 'n'
+    type: analog
+    increment: -1
+    controller: 46
+    channel: 0
+
+  - sequence: 'j'
+    type: analog
+    increment: 1
+    controller: 47
+    channel: 0
+
+  - sequence: ','
+    type: analog
+    increment: -1
+    controller: 47
+    channel: 0
+
+  - sequence: 'k'
+    type: analog
+    increment: 1
+    controller: 52
+    channel: 0
+
+  - sequence: ';'
+    type: analog
+    increment: -1
+    controller: 52
+    channel: 0
+
+  - sequence: 'l'
+    type: analog
+    increment: 1
+    controller: 53
+    channel: 0
+
+  - sequence: ':'
+    type: analog
+    increment: -1
+    controller: 53
+    channel: 0
+
+  - sequence: 'm'
+    type: analog
+    increment: 1
+    controller: 54
+    channel: 0
+
+  - sequence: '!'
+    type: analog
+    increment: -1
+    controller: 54
+    channel: 0
+
+  # Transport play button and stop button
+  - sequence: ' '
+    type: digital
+    controller:
+      cycle:
+        - 55
+        - 56
+    channel: 0
+
+    # Right arrow
+  - sequence: '\u001b[C'
+    type: digital
+    controller: 105
+
+    # Left arrow
+  - sequence: '\u001b[D'
+    type: digital
+    controller: 106
+
+    # up arrow
+  - sequence: '\u001b[A'
+    type: digital
+    controller: 107
+
+    # down arrow
+  - sequence: '\u001b[B'
+    type: digital
+    controller: 108

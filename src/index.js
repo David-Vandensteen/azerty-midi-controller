@@ -1,8 +1,16 @@
 import { ApplicationService } from '#src/service/application';
-import { ConfigManager } from '#src/manager/config';
+import YamlLoader from '#src/lib/yaml-loader';
+import { log } from '#src/lib/log';
 
-ApplicationService.run(
-  ConfigManager.get([
-    'src/config/application.yaml',
-    'config/application.yaml']),
-);
+const configFile = './src/config/default.yaml';
+
+const config = YamlLoader(configFile);
+
+if (config) log.green('Config', configFile, 'was loaded');
+
+new ApplicationService(config.port, config.mapping, {
+  midiIn: 'Gestionnaire IAC Bus 1',
+  midiOut: 'Gestionnaire IAC Bus 1',
+}) // TODO :
+  .midiConnect()
+  .serve();

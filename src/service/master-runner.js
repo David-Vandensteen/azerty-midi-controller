@@ -1,4 +1,4 @@
-import { rMidiServer } from 'remote-midi';
+import { RemoteMidiMaster } from 'remote-midi';
 import { log } from '#src/lib/log';
 
 export default class MasterRunnerService {
@@ -16,7 +16,7 @@ export default class MasterRunnerService {
 
   start() {
     try {
-      const midiServer = rMidiServer(this.#host, this.#port, this.#options);
+      const midiServer = RemoteMidiMaster(this.#host, this.#port, this.#options);
       midiServer.start();
     } catch (error) {
       log(error);

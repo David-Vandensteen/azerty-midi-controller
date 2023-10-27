@@ -1,5 +1,5 @@
 import { argService } from '#src/service/arg';
-import { ApplicationConfigService } from '#src/service/applicationConfig';
+import { ApplicationConfigService } from '#src/service/application-config';
 import YAMLLoader from '#src/lib/yaml-loader';
 
 export default class ConfigManager {

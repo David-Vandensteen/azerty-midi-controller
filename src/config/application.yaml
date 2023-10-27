@@ -1,4 +1,0 @@
-defaultKeyMappingFiles :
-  - src/model/mcc-1/config/default-fr.yaml
-  - dist/mcc.yaml
-  - mcc.yaml
