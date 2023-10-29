@@ -1,6 +1,6 @@
 import { ApplicationService } from '#src/service/application';
 import YamlLoader from '#src/lib/yaml-loader';
-import { log } from '#src/lib/custom-console-log';
+import { log } from 'custom-console-log';
 
 const configFile = './src/config/default.yaml';
 
