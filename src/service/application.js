@@ -62,8 +62,6 @@ export default class ApplicationService {
         value: nextMidiValue,
         channel: c,
       });
-
-      console.log(this.#midiControllerStore.get());
     }
   }
 

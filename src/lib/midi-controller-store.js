@@ -2,14 +2,6 @@ import { MidiNormalizer } from '#src/lib/midi-normalizer';
 
 let instance;
 
-const decode = (id) => {
-  const controller = Math.floor(id / 128);
-  const channel = id % 128;
-  return { controller, channel };
-};
-
-const encode = (controller, channel) => controller * 128 + channel;
-
 export default class MidiControllerStore {
   #cache = new Map();
 
@@ -18,12 +10,18 @@ export default class MidiControllerStore {
     return instance;
   }
 
-  get() { return this.#cache; }
+  static decode(id) {
+    const controller = Math.floor(id / 128);
+    const channel = id % 128;
+    return { controller, channel };
+  }
+
+  static encode(controller, channel) { return controller * 128 + channel; }
 
   getValue(controller, channel) {
     if (controller === undefined) throw new Error('controller is undefined');
     if (channel === undefined) throw new Error('channel is undefined');
-    const key = encode(controller, channel);
+    const key = MidiControllerStore.encode(controller, channel);
     return this.#cache.get(key) ?? 0;
   }
 
@@ -39,13 +37,17 @@ export default class MidiControllerStore {
     const normalizedController = MidiNormalizer.controller(controller);
     const normalizedChannel = MidiNormalizer.channel(channel);
     const normalizedValue = MidiNormalizer.value(value);
-    this.#cache.set(encode(normalizedController, normalizedChannel), normalizedValue);
+    this.#cache.set(
+      MidiControllerStore.encode(
+        normalizedController,
+        normalizedChannel,
+      ),
+      normalizedValue,
+    );
     return this;
   }
 }
 
 export {
   MidiControllerStore,
-  encode,
-  decode,
 };
