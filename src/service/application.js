@@ -1,49 +1,10 @@
 /* eslint-disable lines-between-class-members */
-// import { MasterRunnerService } from '#src/service/master-runner';
-// import { SlaveRunnerService } from '#src/service/slave-runner';
-
-// export default class ApplicationService {
-//   static run(config) {
-//     if (!config?.mode ?? !config) throw new Error('invalid configuration');
-//     const { host, port, mode } = config;
-//     if (mode === 'master') {
-//       const { midiOutputDeviceName, midiInputDeviceName } = config;
-//       try {
-//         const master = new MasterRunnerService(
-//           host,
-//           port,
-//           { midiInputDeviceName, midiOutputDeviceName },
-//         );
-//         master.start();
-//       } catch (error) {
-//         throw new Error(`Error while creating MasterRunnerService: ${error}`);
-//       }
-//     }
-
-//     if (mode === 'slave') {
-//       const { keyMappingConfig } = config;
-//       try {
-//         const slave = new SlaveRunnerService(
-//           host,
-//           port,
-//           keyMappingConfig,
-//         );
-//         slave.start();
-//       } catch (error) {
-//         throw new Error(`Error while creating SlaveRunnerService: ${error}`);
-//       }
-//     }
-//   }
-// }
-
-// export { ApplicationService };
-
 import { NetKeyboardServer } from 'net-keyboard';
 import easymidi from 'easymidi';
 import { MidiControllerStore } from '#src/lib/midi-controller-store';
 import { getMappingFromSequence } from '#src/lib/get-mapping-from-sequence';
 import { getNextMidiValue } from '#src/lib/get-next-midi-value';
-import { log } from '#src/lib/log';
+import { log } from '#src/lib/custom-console-log';
 
 export default class ApplicationService {
   #port;
