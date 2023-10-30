@@ -1,4 +1,6 @@
-const getNextMidiValue = (midiControllerStore, type, channel, controller, increment) => {
+import { MidiNormalizer } from 'midi-normalizer';
+
+const getNextMidiValue = (midiControllerStore, type, controller, channel, increment) => {
   if (type === undefined) throw new Error('type is undefinded');
   if (channel === undefined) throw new Error('channel is undefined');
   if (controller === undefined) throw new Error('controller is undefined');
@@ -8,7 +10,7 @@ const getNextMidiValue = (midiControllerStore, type, channel, controller, increm
     ? fromValue + increment
     : 127;
 
-  return toValue;
+  return MidiNormalizer.value(toValue);
 };
 
 export default getNextMidiValue;

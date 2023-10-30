@@ -1,7 +1,7 @@
 /* eslint-disable lines-between-class-members */
 import { NetKeyboardServer } from 'net-keyboard';
 import easymidi from 'easymidi';
-import { MidiControllerStore } from '#src/lib/midi-controller-store';
+import { MidiControllerStore } from 'midi-controller-store';
 import { getMappingFromSequence } from '#src/lib/get-mapping-from-sequence';
 import { getNextMidiValue } from '#src/lib/get-next-midi-value';
 import { log } from 'custom-console-log';
@@ -52,11 +52,12 @@ export default class ApplicationService {
         controller: cc, channel: c, increment: i, type: t,
       } = mapping;
 
-      const nextMidiValue = getNextMidiValue(this.#midiControllerStore, t, c, cc, i);
+      const nextMidiValue = getNextMidiValue(this.#midiControllerStore, t, cc, c, i);
 
       log.dev('set', 'controller', cc, 'channel', c, 'value', nextMidiValue);
 
       this.#midiControllerStore.set(cc, c, nextMidiValue);
+      console.log(this.#midiControllerStore);
       this.#midiOutInstance.send('cc', {
         controller: cc,
         value: nextMidiValue,
