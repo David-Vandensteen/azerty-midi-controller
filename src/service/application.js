@@ -57,7 +57,6 @@ export default class ApplicationService {
       log.dev('set', 'controller', cc, 'channel', c, 'value', nextMidiValue);
 
       this.#midiControllerStore.set(cc, c, nextMidiValue);
-      console.log(this.#midiControllerStore);
       this.#midiOutInstance.send('cc', {
         controller: cc,
         value: nextMidiValue,
@@ -67,16 +66,13 @@ export default class ApplicationService {
   }
 
   #handleMidiInMessage() {
-    console.log('handle midi in', this.#midiIn);
+    log.dev('handle midi in', this.#midiIn);
     this.#midiInInstance
       .on('cc', (message) => {
-        console.log('message from midi in', message);
+        log.dev('message from midi in', message);
         this.#midiControllerStore.set(message.controller, message.channel, message.value);
         // console.log('midi store', this.#midiControllerStore.get());
-      })
-      .on('cc', () => { console.log('cc'); });
-      // .on('clock', () => { console.log('clock receive '); })
-      // .on('noteon', () => { console.log('note on'); });
+      });
   }
 
   serve() {
