@@ -1,0 +1,26 @@
+midiIn: 'Gestionnaire IAC Bus 1'
+midiOut: 'Gestionnaire IAC Bus 1'
+port: 8080
+
+# 28 - Previous preset
+# 29 - Next preset
+# 112 - Navigate throug...
+# 113 - Add/Remove sel...
+# 114 - Navigate throug...
+# 115 - Select preset
+
+mapping:
+  - sequence: 'q'
+    type: digital
+    controller: 28
+    channel: 0
+
+  - sequence: 'w'
+    type: digital
+    controller: 29
+    channel: 0
+
+  - sequence: 's'
+    type: digital
+    controller: 115
+    channel: 0

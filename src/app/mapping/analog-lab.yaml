@@ -24,3 +24,11 @@
 # 		<assignment controller="115" channel="0" paramid="357" min="0.000000" max="1.000000" isrelative="0"/>
 # 	</midiconfig>
 # </rootnode>
+
+
+# 28 - Previous preset
+# 29 - Next preset
+# 112 - Navigate throug...
+# 113 - Add/Remove sel...
+# 114 - Navigate throug...
+# 115 - Select preset

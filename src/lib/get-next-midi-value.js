@@ -4,11 +4,12 @@ const getNextMidiValue = (midiControllerStore, type, controller, channel, increm
   if (type === undefined) throw new Error('type is undefinded');
   if (channel === undefined) throw new Error('channel is undefined');
   if (controller === undefined) throw new Error('controller is undefined');
-  if (increment === undefined) throw new Error('increment is unedined');
+  if (type === 'analog' && increment === undefined) throw new Error('increment is unedined');
   const fromValue = midiControllerStore.getValue(controller, channel);
-  const toValue = (type === 'analog')
-    ? fromValue + increment
-    : 127;
+  let toValue;
+
+  if (type === 'analog') toValue = fromValue + increment;
+  if (type === 'digital') toValue = (fromValue > 0) ? 0 : 127;
 
   return MidiNormalizer.value(toValue);
 };
