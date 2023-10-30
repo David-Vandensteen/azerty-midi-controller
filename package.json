@@ -5,13 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "cli": "node bin/azerty-midi-controller.js",
     "start": "node src/index.js",
     "serve": "nodemon --watch src -e js src/index.js",
     "master": "node src/index.js -m master",
     "slave": "node src/index.js -m slave",
     "test:slave": "node src/index.js -m slave -h 127.0.0.1 -p 7070 -k src/app/mapping/default.yaml",
     "test:master": "node src/index.js -m master -i mcc-in -o mcc-out -h 127.0.0.1 -p 7070",
-    "lint": "eslint src"
+    "lint": "eslint src test bin"
   },
   "author": "David Vandensteen <dvandensteen@gmail.com>",
   "license": "MIT",

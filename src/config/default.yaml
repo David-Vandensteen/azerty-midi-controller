@@ -1,3 +1,5 @@
+midiIn: 'Gestionnaire IAC Bus 1'
+midiOut: 'Gestionnaire IAC Bus 1'
 port: 8080
 
 mapping:
