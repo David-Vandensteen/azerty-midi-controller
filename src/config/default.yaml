@@ -2,242 +2,329 @@ midiIn: 'Gestionnaire IAC Bus 1'
 midiOut: 'Gestionnaire IAC Bus 1'
 port: 8080
 
+pages:
+  - sequence: '0'
+    page: default
+
+  - sequence: '1'
+    page: 'track 1'
+
 mapping:
   - sequence: '&'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 3
     channel: 0
 
   - sequence: 'a'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 3
     channel: 0
 
   - sequence: 'é'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 9
     channel: 0
 
   - sequence: 'z'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 9
     channel: 0
 
   - sequence: '"'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 14
     channel: 0
 
   - sequence: 'e'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 14
     channel: 0
 
   - sequence: "'"
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 15
     channel: 0
 
   - sequence: 'r'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 15
     channel: 0
 
   - sequence: '('
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 22
     channel: 0
 
   - sequence: 't'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 22
     channel: 0
 
   - sequence: '-'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 23
     channel: 0
 
   - sequence: 'y'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 23
     channel: 0
 
   - sequence: 'è'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 24
     channel: 0
 
   - sequence: 'u'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 24
     channel: 0
 
   - sequence: '_'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 25
     channel: 0
 
   - sequence: 'i'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 25
     channel: 0
 
   - sequence: 'ç'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 26
     channel: 0
 
   - sequence: 'o'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 26
     channel: 0
 
   - sequence: 'à'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 27
     channel: 0
 
   - sequence: 'p'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 27
     channel: 0
 
   - sequence: 'q'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 28
     channel: 0
 
   - sequence: 'w'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 28
     channel: 0
 
   - sequence: 's'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 29
     channel: 0
 
   - sequence: 'x'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 29
     channel: 0
 
   - sequence: 'd'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 30
     channel: 0
 
   - sequence: 'c'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 31
     channel: 0
 
   - sequence: 'f'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 35
     channel: 0
 
   - sequence: 'v'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 35
     channel: 0
 
   - sequence: 'g'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 41
     channel: 0
 
   - sequence: 'b'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 41
     channel: 0
 
   - sequence: 'h'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 46
     channel: 0
 
   - sequence: 'n'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 46
     channel: 0
 
   - sequence: 'j'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 47
     channel: 0
 
   - sequence: ','
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 47
     channel: 0
 
   - sequence: 'k'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 52
     channel: 0
 
   - sequence: ';'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 52
     channel: 0
 
   - sequence: 'l'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 53
     channel: 0
 
   - sequence: ':'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 53
     channel: 0
 
   - sequence: 'm'
+    pages:
+      - default
     type: analog
     increment: 1
     controller: 54
     channel: 0
 
   - sequence: '!'
+    pages:
+      - default
     type: analog
     increment: -1
     controller: 54
@@ -254,20 +341,32 @@ mapping:
 
     # Right arrow
   - sequence: '\u001b[C'
+    pages:
+      - default
     type: digital
     controller: 105
+    channel: 0
 
     # Left arrow
   - sequence: '\u001b[D'
+    pages:
+      - default
     type: digital
     controller: 106
+    channel: 0
 
     # up arrow
   - sequence: '\u001b[A'
+    pages:
+      - default
     type: digital
     controller: 107
+    channel: 0
 
     # down arrow
   - sequence: '\u001b[B'
+    pages:
+      - default
     type: digital
     controller: 108
+    channel: 0

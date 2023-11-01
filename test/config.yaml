@@ -1,0 +1,23 @@
+pages:
+  - sequence: '0'
+    page: default
+
+  - sequence: '1'
+    page: 'track 1'
+
+mapping:
+  - sequence: '&'
+    pages:
+      - default
+    type: analog
+    increment: 1
+    controller: 3
+    channel: 0
+
+  - sequence: 'a'
+    pages:
+      - default
+    type: analog
+    increment: -1
+    controller: 3
+    channel: 0

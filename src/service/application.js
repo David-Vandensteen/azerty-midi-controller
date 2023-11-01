@@ -2,9 +2,17 @@
 import { NetKeyboardServer } from 'net-keyboard';
 import easymidi from 'easymidi';
 import { MidiControllerStore } from 'midi-controller-store';
+import { MappingModel } from '#src/model/mapping';
+import { MidiControllerMessageModel } from '#src/model/midi-controller-message';
 import { getMappingFromSequence } from '#src/lib/get-mapping-from-sequence';
 import { getNextMidiValue } from '#src/lib/get-next-midi-value';
 import { log } from 'custom-console-log';
+import {
+  MappingError,
+  MidiDeviceError,
+  PagesError,
+  PortError,
+} from '#src/model/error';
 
 export default class ApplicationService {
   #port;
@@ -14,21 +22,25 @@ export default class ApplicationService {
   #midiOutInstance;
   #midiControllerStore;
   #mapping;
+  #page;
+  #pages;
 
-  constructor(port, mapping, { midiOut, midiIn } = {}) {
-    if (port === undefined) throw new Error('port is undefined');
-    if (mapping === undefined) throw new Error('mapping is undefined');
+  constructor(port, pages, mapping, { midiOut, midiIn } = {}) {
+    if (port === undefined) throw new PortError('port is undefined');
+    if (mapping === undefined) throw new MappingError('mapping is undefined');
+    if (pages === undefined) throw new PagesError('pages is undefined');
     if (midiOut) this.#midiOut = midiOut;
     if (midiIn) this.#midiIn = midiIn;
     this.#mapping = mapping;
     this.#port = port;
+    this.#pages = pages;
     this.#midiControllerStore = MidiControllerStore.getInstance();
   }
 
   midiConnect() {
     log.magenta('available midi outputs', easymidi.getOutputs());
     log.magenta('available midi inputs', easymidi.getInputs());
-    if (this.#midiIn === undefined && this.#midiOut === undefined) throw new Error('no midi device is defined');
+    if (this.#midiIn === undefined && this.#midiOut === undefined) throw new MidiDeviceError('no midi device is defined');
     if (this.#midiIn) this.#midiInInstance = new easymidi.Input(this.#midiIn);
     if (this.#midiOut) this.#midiOutInstance = new easymidi.Output(this.#midiOut);
 
@@ -45,7 +57,7 @@ export default class ApplicationService {
     const { sequence } = message;
 
     log.dev('sequence', sequence);
-    const mapping = getMappingFromSequence(this.#mapping, sequence);
+    const mapping = new MappingModel(getMappingFromSequence(this.#mapping, sequence));
 
     if (mapping) {
       const {
@@ -54,14 +66,14 @@ export default class ApplicationService {
 
       const nextMidiValue = getNextMidiValue(this.#midiControllerStore, t, cc, c, i);
 
-      log.dev('set', 'controller', cc, 'channel', c, 'value', nextMidiValue);
+      const midiMessage = new MidiControllerMessageModel(
+        { controller: cc, channel: c, value: nextMidiValue },
+      );
 
-      this.#midiControllerStore.set(cc, c, nextMidiValue);
-      this.#midiOutInstance.send('cc', {
-        controller: cc,
-        value: nextMidiValue,
-        channel: c,
-      });
+      log.dev('set', 'controller', midiMessage.controller, 'channel', midiMessage.channel, 'value', midiMessage.value);
+
+      this.#midiControllerStore.set(midiMessage.controller, midiMessage.channel, midiMessage.value);
+      this.#midiOutInstance.send('cc', midiMessage);
     }
   }
 
