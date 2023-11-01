@@ -3,11 +3,11 @@ midiOut: 'Gestionnaire IAC Bus 1'
 port: 8080
 
 pages:
-  - sequence: '0'
-    page: default
+  - sequence: 'n'
+    id: default
 
-  - sequence: '1'
-    page: 'track 1'
+  - sequence: 'b'
+    id: 'track 1'
 
 mapping:
   - sequence: '&'

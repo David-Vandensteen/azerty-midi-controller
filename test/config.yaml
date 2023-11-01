@@ -1,23 +1,62 @@
-pages:
-  - sequence: '0'
-    page: default
+midiIn: 'Gestionnaire IAC Bus 1'
+midiOut: 'Gestionnaire IAC Bus 1'
+port: 8080
 
-  - sequence: '1'
-    page: 'track 1'
+pages:
+  - sequence: '&'
+    id: track 1
+
+  - sequence: 'é'
+    id: track 2
+
+  - sequence: '"'
+    id: track 3
 
 mapping:
-  - sequence: '&'
+  - sequence: 'a'
     pages:
-      - default
+      - track 1
     type: analog
     increment: 1
     controller: 3
     channel: 0
 
-  - sequence: 'a'
+  - sequence: 'q'
     pages:
-      - default
+      - track 1
     type: analog
     increment: -1
     controller: 3
+    channel: 0
+
+  - sequence: 'a'
+    pages:
+      - track 2
+    type: analog
+    increment: 1
+    controller: 4
+    channel: 0
+
+  - sequence: 'q'
+    pages:
+      - track 2
+    type: analog
+    increment: -1
+    controller: 4
+    channel: 0
+
+  - sequence: 'a'
+    pages:
+      - track 3
+    type: analog
+    increment: 1
+    controller: 5
+    channel: 0
+
+  - sequence: 'q'
+    pages:
+      - track 3
+    type: analog
+    increment: -1
+    controller: 5
     channel: 0

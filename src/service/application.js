@@ -3,8 +3,9 @@ import { NetKeyboardServer } from 'net-keyboard';
 import easymidi from 'easymidi';
 import { MidiControllerStore } from 'midi-controller-store';
 import { MappingModel } from '#src/model/mapping';
+import { PageModel } from '#src/model/page';
 import { MidiControllerMessageModel } from '#src/model/midi-controller-message';
-import { getMappingFromSequence } from '#src/lib/get-mapping-from-sequence';
+import { getFromSequence } from '#src/lib/get-from-sequence';
 import { getNextMidiValue } from '#src/lib/get-next-midi-value';
 import { log } from 'custom-console-log';
 import {
@@ -22,7 +23,7 @@ export default class ApplicationService {
   #midiOutInstance;
   #midiControllerStore;
   #mapping;
-  #page;
+  #pageId;
   #pages;
 
   constructor(port, pages, mapping, { midiOut, midiIn } = {}) {
@@ -34,6 +35,7 @@ export default class ApplicationService {
     this.#mapping = mapping;
     this.#port = port;
     this.#pages = pages;
+    this.#pageId = pages[0].id;
     this.#midiControllerStore = MidiControllerStore.getInstance();
   }
 
@@ -52,29 +54,36 @@ export default class ApplicationService {
     return this;
   }
 
+  #handleMapping(mapping) {
+    const {
+      controller: cc, channel: c, increment: i, type: t,
+    } = mapping;
+
+    const nextMidiValue = getNextMidiValue(this.#midiControllerStore, t, cc, c, i);
+
+    const midiMessage = new MidiControllerMessageModel(
+      { controller: cc, channel: c, value: nextMidiValue },
+    );
+
+    log.dev('set', 'controller', midiMessage.controller, 'channel', midiMessage.channel, 'value', midiMessage.value);
+
+    this.#midiControllerStore.set(midiMessage.controller, midiMessage.channel, midiMessage.value);
+    this.#midiOutInstance.send('cc', midiMessage);
+  }
+
+  #handlePage(page) {
+    log.magenta('Switch to page :', page.id);
+    this.#pageId = page.id;
+  }
+
   #handleNetKeyboardMessage(jsonMessage) {
     const message = JSON.parse(jsonMessage);
     const { sequence } = message;
 
     log.dev('sequence', sequence);
-    const mapping = new MappingModel(getMappingFromSequence(this.#mapping, sequence));
-
-    if (mapping) {
-      const {
-        controller: cc, channel: c, increment: i, type: t,
-      } = mapping;
-
-      const nextMidiValue = getNextMidiValue(this.#midiControllerStore, t, cc, c, i);
-
-      const midiMessage = new MidiControllerMessageModel(
-        { controller: cc, channel: c, value: nextMidiValue },
-      );
-
-      log.dev('set', 'controller', midiMessage.controller, 'channel', midiMessage.channel, 'value', midiMessage.value);
-
-      this.#midiControllerStore.set(midiMessage.controller, midiMessage.channel, midiMessage.value);
-      this.#midiOutInstance.send('cc', midiMessage);
-    }
+    const pageOrMapping = getFromSequence(this.#pageId, this.#pages, this.#mapping, sequence);
+    if (pageOrMapping instanceof PageModel) this.#handlePage(pageOrMapping);
+    if (pageOrMapping instanceof MappingModel) this.#handleMapping(pageOrMapping);
   }
 
   #handleMidiInMessage() {
