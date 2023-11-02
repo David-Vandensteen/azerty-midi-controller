@@ -3,370 +3,155 @@ midiOut: 'Gestionnaire IAC Bus 1'
 port: 8080
 
 pages:
-  - sequence: 'n'
-    id: default
-
-  - sequence: 'b'
-    id: 'track 1'
-
-mapping:
   - sequence: '&'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 3
-    channel: 0
+    id: track 1
 
-  - sequence: 'a'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 3
-    channel: 0
-
-  - sequence: 'é'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 9
-    channel: 0
-
-  - sequence: 'z'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 9
-    channel: 0
+  - sequence: é
+    id: track 2
 
   - sequence: '"'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 14
-    channel: 0
-
-  - sequence: 'e'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 14
-    channel: 0
+    id: track 3
 
   - sequence: "'"
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 15
-    channel: 0
+    id: track 4
 
-  - sequence: 'r'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 15
-    channel: 0
+  - sequence: (
+    id: track 5
 
-  - sequence: '('
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 22
-    channel: 0
+  - sequence: §
+    id: track 6
 
-  - sequence: 't'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 22
-    channel: 0
+  - sequence: è
+    id: track 7
 
-  - sequence: '-'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 23
-    channel: 0
+  - sequence: '!'
+    id: track 8
 
-  - sequence: 'y'
+mapping:
+  - sequence: q
     pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 23
-    channel: 0
-
-  - sequence: 'è'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 24
-    channel: 0
-
-  - sequence: 'u'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 24
-    channel: 0
-
-  - sequence: '_'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 25
-    channel: 0
-
-  - sequence: 'i'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 25
-    channel: 0
-
-  - sequence: 'ç'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 26
-    channel: 0
-
-  - sequence: 'o'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 26
-    channel: 0
-
-  - sequence: 'à'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 27
-    channel: 0
-
-  - sequence: 'p'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 27
-    channel: 0
-
-  - sequence: 'q'
-    pages:
-      - default
+      - track 1
     type: analog
     increment: 1
     controller: 28
     channel: 0
 
-  - sequence: 'w'
+  - sequence: w
     pages:
-      - default
+      - track 1
     type: analog
     increment: -1
     controller: 28
     channel: 0
 
-  - sequence: 's'
+  - sequence: q
     pages:
-      - default
+      - track 2
     type: analog
     increment: 1
     controller: 29
     channel: 0
 
-  - sequence: 'x'
+  - sequence: w
     pages:
-      - default
+      - track 2
     type: analog
     increment: -1
     controller: 29
     channel: 0
 
-  - sequence: 'd'
+  - sequence: q
     pages:
-      - default
+      - track 3
     type: analog
     increment: 1
     controller: 30
     channel: 0
 
-  - sequence: 'c'
+  - sequence: w
     pages:
-      - default
+      - track 3
+    type: analog
+    increment: -1
+    controller: 30
+    channel: 0
+
+  - sequence: q
+    pages:
+      - track 4
+    type: analog
+    increment: 1
+    controller: 31
+    channel: 0
+
+  - sequence: w
+    pages:
+      - track 4
     type: analog
     increment: -1
     controller: 31
     channel: 0
 
-  - sequence: 'f'
+  - sequence: q
     pages:
-      - default
+      - track 5
     type: analog
     increment: 1
     controller: 35
     channel: 0
 
-  - sequence: 'v'
+  - sequence: w
     pages:
-      - default
+      - track 5
     type: analog
     increment: -1
     controller: 35
     channel: 0
 
-  - sequence: 'g'
+  - sequence: q
     pages:
-      - default
+      - track 6
     type: analog
     increment: 1
     controller: 41
     channel: 0
 
-  - sequence: 'b'
+  - sequence: w
     pages:
-      - default
+      - track 6
     type: analog
     increment: -1
     controller: 41
     channel: 0
 
-  - sequence: 'h'
+  - sequence: q
     pages:
-      - default
+      - track 7
     type: analog
     increment: 1
     controller: 46
     channel: 0
 
-  - sequence: 'n'
+  - sequence: w
     pages:
-      - default
+      - track 7
     type: analog
     increment: -1
     controller: 46
     channel: 0
 
-  - sequence: 'j'
+  - sequence: q
     pages:
-      - default
+      - track 8
     type: analog
     increment: 1
     controller: 47
     channel: 0
 
-  - sequence: ','
+  - sequence: w
     pages:
-      - default
+      - track 8
     type: analog
     increment: -1
     controller: 47
-    channel: 0
-
-  - sequence: 'k'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 52
-    channel: 0
-
-  - sequence: ';'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 52
-    channel: 0
-
-  - sequence: 'l'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 53
-    channel: 0
-
-  - sequence: ':'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 53
-    channel: 0
-
-  - sequence: 'm'
-    pages:
-      - default
-    type: analog
-    increment: 1
-    controller: 54
-    channel: 0
-
-  - sequence: '!'
-    pages:
-      - default
-    type: analog
-    increment: -1
-    controller: 54
-    channel: 0
-
-  # Transport play button and stop button
-  # - sequence: ' '
-  #   type: digital
-  #   controller:
-  #     cycle:
-  #       - 55
-  #       - 56
-  #   channel: 0
-
-    # Right arrow
-  - sequence: '\u001b[C'
-    pages:
-      - default
-    type: digital
-    controller: 105
-    channel: 0
-
-    # Left arrow
-  - sequence: '\u001b[D'
-    pages:
-      - default
-    type: digital
-    controller: 106
-    channel: 0
-
-    # up arrow
-  - sequence: '\u001b[A'
-    pages:
-      - default
-    type: digital
-    controller: 107
-    channel: 0
-
-    # down arrow
-  - sequence: '\u001b[B'
-    pages:
-      - default
-    type: digital
-    controller: 108
     channel: 0
