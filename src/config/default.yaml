@@ -27,6 +27,12 @@ pages:
   - sequence: '!'
     id: track 8
 
+  - sequence: ç
+    id: macro 1
+
+  - sequence: à
+    id: macro 2
+
 mapping:
   - sequence: q
     pages:
@@ -154,4 +160,260 @@ mapping:
     type: analog
     increment: -1
     controller: 47
+    channel: 0
+
+  - sequence: q
+    pages:
+      - macro 1
+    type: analog
+    increment: 1
+    controller: 48
+    channel: 0
+
+  - sequence: w
+    pages:
+      - macro 1
+    type: analog
+    increment: -1
+    controller: 48
+    channel: 0
+
+  - sequence: s
+    pages:
+      - macro 1
+    type: analog
+    increment: 1
+    controller: 49
+    channel: 0
+
+  - sequence: x
+    pages:
+      - macro 1
+    type: analog
+    increment: -1
+    controller: 49
+    channel: 0
+
+  - sequence: d
+    pages:
+      - macro 1
+    type: analog
+    increment: 1
+    controller: 50
+    channel: 0
+
+  - sequence: c
+    pages:
+      - macro 1
+    type: analog
+    increment: -1
+    controller: 50
+    channel: 0
+
+  - sequence: f
+    pages:
+      - macro 1
+    type: analog
+    increment: 1
+    controller: 51
+    channel: 0
+
+  - sequence: v
+    pages:
+      - macro 1
+    type: analog
+    increment: -1
+    controller: 51
+    channel: 0
+
+  - sequence: g
+    pages:
+      - macro 1
+    type: analog
+    increment: 1
+    controller: 52
+    channel: 0
+
+  - sequence: b
+    pages:
+      - macro 1
+    type: analog
+    increment: -1
+    controller: 52
+    channel: 0
+
+  - sequence: h
+    pages:
+      - macro 1
+    type: analog
+    increment: 1
+    controller: 53
+    channel: 0
+
+  - sequence: n
+    pages:
+      - macro 1
+    type: analog
+    increment: -1
+    controller: 53
+    channel: 0
+
+  - sequence: j
+    pages:
+      - macro 1
+    type: analog
+    increment: 1
+    controller: 54
+    channel: 0
+
+  - sequence: ','
+    pages:
+      - macro 1
+    type: analog
+    increment: -1
+    controller: 54
+    channel: 0
+
+  - sequence: k
+    pages:
+      - macro 1
+    type: analog
+    increment: 1
+    controller: 55
+    channel: 0
+
+  - sequence: ';'
+    pages:
+      - macro 1
+    type: analog
+    increment: -1
+    controller: 55
+    channel: 0
+
+  - sequence: q
+    pages:
+      - macro 2
+    type: analog
+    increment: 1
+    controller: 56
+    channel: 0
+
+  - sequence: w
+    pages:
+      - macro 2
+    type: analog
+    increment: -1
+    controller: 56
+    channel: 0
+
+  - sequence: s
+    pages:
+      - macro 2
+    type: analog
+    increment: 1
+    controller: 57
+    channel: 0
+
+  - sequence: x
+    pages:
+      - macro 2
+    type: analog
+    increment: -1
+    controller: 57
+    channel: 0
+
+  - sequence: d
+    pages:
+      - macro 2
+    type: analog
+    increment: 1
+    controller: 58
+    channel: 0
+
+  - sequence: c
+    pages:
+      - macro 2
+    type: analog
+    increment: -1
+    controller: 58
+    channel: 0
+
+  - sequence: f
+    pages:
+      - macro 2
+    type: analog
+    increment: 1
+    controller: 59
+    channel: 0
+
+  - sequence: v
+    pages:
+      - macro 2
+    type: analog
+    increment: -1
+    controller: 59
+    channel: 0
+
+  - sequence: g
+    pages:
+      - macro 2
+    type: analog
+    increment: 1
+    controller: 60
+    channel: 0
+
+  - sequence: b
+    pages:
+      - macro 2
+    type: analog
+    increment: -1
+    controller: 60
+    channel: 0
+
+  - sequence: h
+    pages:
+      - macro 2
+    type: analog
+    increment: 1
+    controller: 61
+    channel: 0
+
+  - sequence: n
+    pages:
+      - macro 2
+    type: analog
+    increment: -1
+    controller: 61
+    channel: 0
+
+  - sequence: j
+    pages:
+      - macro 2
+    type: analog
+    increment: 1
+    controller: 62
+    channel: 0
+
+  - sequence: ','
+    pages:
+      - macro 2
+    type: analog
+    increment: -1
+    controller: 62
+    channel: 0
+
+  - sequence: k
+    pages:
+      - macro 2
+    type: analog
+    increment: 1
+    controller: 63
+    channel: 0
+
+  - sequence: ';'
+    pages:
+      - macro 2
+    type: analog
+    increment: -1
+    controller: 63
     channel: 0

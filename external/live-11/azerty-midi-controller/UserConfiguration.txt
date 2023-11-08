@@ -112,22 +112,22 @@ Pad16Channel: -1
 # control.  If 9 or more Encoders are used, the bank
 # buttons will select two banks of 8 parameters for the
 # Encoders to control.
-Encoder1: -1
-Encoder2: -1
-Encoder3: -1
-Encoder4: -1
-Encoder5: -1
-Encoder6: -1
-Encoder7: -1
-Encoder8: -1
-Encoder9: -1
-Encoder10: -1
-Encoder11: -1
-Encoder12: -1
-Encoder13: -1
-Encoder14: -1
-Encoder15: -1
-Encoder16: -1
+Encoder1: 48
+Encoder2: 49
+Encoder3: 50
+Encoder4: 51
+Encoder5: 52
+Encoder6: 53
+Encoder7: 54
+Encoder8: 55
+Encoder9: 56
+Encoder10: 57
+Encoder11: 58
+Encoder12: 59
+Encoder13: 60
+Encoder14: 61
+Encoder15: 62
+Encoder16: 63
 EncoderChannel1: -1
 EncoderChannel2: -1
 EncoderChannel3: -1
@@ -298,10 +298,10 @@ MixerButtonsToggle: False
 # transport-related features.
 
 # StopButton stops playback.
-StopButton: 56
+StopButton: -1
 
 # PlayButton starts playback.
-PlayButton: 55
+PlayButton: -1
 
 # RecButton toggles Arrangement Record.
 RecButton: -1
