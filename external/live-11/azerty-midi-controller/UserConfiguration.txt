@@ -112,22 +112,22 @@ Pad16Channel: -1
 # control.  If 9 or more Encoders are used, the bank
 # buttons will select two banks of 8 parameters for the
 # Encoders to control.
-Encoder1: 48
-Encoder2: 49
-Encoder3: 50
-Encoder4: 51
-Encoder5: 52
-Encoder6: 53
-Encoder7: 54
-Encoder8: 55
-Encoder9: 56
-Encoder10: 57
-Encoder11: 58
-Encoder12: 59
-Encoder13: 60
-Encoder14: 61
-Encoder15: 62
-Encoder16: 63
+Encoder1: 1
+Encoder2: 2
+Encoder3: 3
+Encoder4: 4
+Encoder5: 5
+Encoder6: 6
+Encoder7: 7
+Encoder8: 8
+Encoder9: 9
+Encoder10: 10
+Encoder11: 11
+Encoder12: 12
+Encoder13: 13
+Encoder14: 14
+Encoder15: 15
+Encoder16: 16
 EncoderChannel1: -1
 EncoderChannel2: -1
 EncoderChannel3: -1
@@ -177,14 +177,14 @@ LockButton: -1
 # features of 8 Tracks at a time.
 
 # VolumeSlider1-VolumeSlider8 control Track volume.
-VolumeSlider1: 28
-VolumeSlider2: 29
-VolumeSlider3: 30
-VolumeSlider4: 31
-VolumeSlider5: 35
-VolumeSlider6: 41
-VolumeSlider7: 46
-VolumeSlider8: 47
+VolumeSlider1: 17
+VolumeSlider2: 18
+VolumeSlider3: 19
+VolumeSlider4: 20
+VolumeSlider5: 21
+VolumeSlider6: 22
+VolumeSlider7: 23
+VolumeSlider8: 24
 Slider1Channel: 0
 Slider2Channel: 0
 Slider3Channel: 0
@@ -231,14 +231,14 @@ TrackMuteButton8: -1
 InvertMuteButtonFeedback: True
 
 # TrackSoloButton1-TrackSoloButton8 control Track soloing.
-TrackSoloButton1: 57
-TrackSoloButton2: 59
-TrackSoloButton3: 61
-TrackSoloButton4: 63
-TrackSoloButton5: 86
-TrackSoloButton6: 88
-TrackSoloButton7: 90
-TrackSoloButton8: 103
+TrackSoloButton1: 25
+TrackSoloButton2: 26
+TrackSoloButton3: 27
+TrackSoloButton4: 28
+TrackSoloButton5: 29
+TrackSoloButton6: 30
+TrackSoloButton7: 31
+TrackSoloButton8: 32
 
 # TrackSelectButton1-TrackSelectButton8 select Tracks.
 TrackSelectButton1: -1
@@ -251,14 +251,14 @@ TrackSelectButton7: -1
 TrackSelectButton8: -1
 
 # TrackArmButton1-TrackArmButton8 control Track arming.
-TrackArmButton1: 58
-TrackArmButton2: 60
-TrackArmButton3: 62
-TrackArmButton4: 85
-TrackArmButton5: 87
-TrackArmButton6: 89
-TrackArmButton7: 102
-TrackArmButton8: 104
+TrackArmButton1: 33
+TrackArmButton2: 34
+TrackArmButton3: 35
+TrackArmButton4: 36
+TrackArmButton5: 37
+TrackArmButton6: 38
+TrackArmButton7: 39
+TrackArmButton8: 40
 
 # NextBankButton and PrevBankButton select the next or
 # previous bank of 8 Tracks for the controls above to
@@ -319,10 +319,10 @@ MetroButton: -1
 LoopButton: -1
 
 # RwdButton rewinds playback.
-RwdButton: 106
+RwdButton: 41
 
 # FwdButton fast-forwards playback.
-FfwdButton: 105
+FfwdButton: 42
 
 # PunchInButton controls Punch-In.
 PunchInButton: -1

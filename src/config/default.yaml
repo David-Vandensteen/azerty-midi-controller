@@ -39,7 +39,7 @@ mapping:
       - track 1
     type: analog
     increment: 1
-    controller: 28
+    controller: 17
     channel: 0
 
   - sequence: w
@@ -47,7 +47,7 @@ mapping:
       - track 1
     type: analog
     increment: -1
-    controller: 28
+    controller: 17
     channel: 0
 
   - sequence: q
@@ -55,7 +55,7 @@ mapping:
       - track 2
     type: analog
     increment: 1
-    controller: 29
+    controller: 18
     channel: 0
 
   - sequence: w
@@ -63,7 +63,7 @@ mapping:
       - track 2
     type: analog
     increment: -1
-    controller: 29
+    controller: 18
     channel: 0
 
   - sequence: q
@@ -71,7 +71,7 @@ mapping:
       - track 3
     type: analog
     increment: 1
-    controller: 30
+    controller: 19
     channel: 0
 
   - sequence: w
@@ -79,7 +79,7 @@ mapping:
       - track 3
     type: analog
     increment: -1
-    controller: 30
+    controller: 19
     channel: 0
 
   - sequence: q
@@ -87,7 +87,7 @@ mapping:
       - track 4
     type: analog
     increment: 1
-    controller: 31
+    controller: 20
     channel: 0
 
   - sequence: w
@@ -95,7 +95,7 @@ mapping:
       - track 4
     type: analog
     increment: -1
-    controller: 31
+    controller: 20
     channel: 0
 
   - sequence: q
@@ -103,7 +103,7 @@ mapping:
       - track 5
     type: analog
     increment: 1
-    controller: 35
+    controller: 21
     channel: 0
 
   - sequence: w
@@ -111,7 +111,7 @@ mapping:
       - track 5
     type: analog
     increment: -1
-    controller: 35
+    controller: 21
     channel: 0
 
   - sequence: q
@@ -119,7 +119,7 @@ mapping:
       - track 6
     type: analog
     increment: 1
-    controller: 41
+    controller: 22
     channel: 0
 
   - sequence: w
@@ -127,7 +127,7 @@ mapping:
       - track 6
     type: analog
     increment: -1
-    controller: 41
+    controller: 22
     channel: 0
 
   - sequence: q
@@ -135,7 +135,7 @@ mapping:
       - track 7
     type: analog
     increment: 1
-    controller: 46
+    controller: 23
     channel: 0
 
   - sequence: w
@@ -143,7 +143,7 @@ mapping:
       - track 7
     type: analog
     increment: -1
-    controller: 46
+    controller: 23
     channel: 0
 
   - sequence: q
@@ -151,7 +151,7 @@ mapping:
       - track 8
     type: analog
     increment: 1
-    controller: 47
+    controller: 24
     channel: 0
 
   - sequence: w
@@ -159,7 +159,7 @@ mapping:
       - track 8
     type: analog
     increment: -1
-    controller: 47
+    controller: 24
     channel: 0
 
   - sequence: q
@@ -167,7 +167,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 48
+    controller: 1
     channel: 0
 
   - sequence: w
@@ -175,7 +175,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 48
+    controller: 1
     channel: 0
 
   - sequence: s
@@ -183,7 +183,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 49
+    controller: 2
     channel: 0
 
   - sequence: x
@@ -191,7 +191,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 49
+    controller: 2
     channel: 0
 
   - sequence: d
@@ -199,7 +199,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 50
+    controller: 3
     channel: 0
 
   - sequence: c
@@ -207,7 +207,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 50
+    controller: 3
     channel: 0
 
   - sequence: f
@@ -215,7 +215,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 51
+    controller: 4
     channel: 0
 
   - sequence: v
@@ -223,7 +223,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 51
+    controller: 4
     channel: 0
 
   - sequence: g
@@ -231,7 +231,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 52
+    controller: 5
     channel: 0
 
   - sequence: b
@@ -239,7 +239,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 52
+    controller: 5
     channel: 0
 
   - sequence: h
@@ -247,7 +247,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 53
+    controller: 6
     channel: 0
 
   - sequence: n
@@ -255,7 +255,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 53
+    controller: 6
     channel: 0
 
   - sequence: j
@@ -263,7 +263,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 54
+    controller: 7
     channel: 0
 
   - sequence: ','
@@ -271,7 +271,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 54
+    controller: 7
     channel: 0
 
   - sequence: k
@@ -279,7 +279,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 55
+    controller: 8
     channel: 0
 
   - sequence: ';'
@@ -287,7 +287,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 55
+    controller: 8
     channel: 0
 
   - sequence: q
@@ -295,7 +295,7 @@ mapping:
       - macro 2
     type: analog
     increment: 1
-    controller: 56
+    controller: 9
     channel: 0
 
   - sequence: w
@@ -303,7 +303,7 @@ mapping:
       - macro 2
     type: analog
     increment: -1
-    controller: 56
+    controller: 9
     channel: 0
 
   - sequence: s
@@ -311,7 +311,7 @@ mapping:
       - macro 2
     type: analog
     increment: 1
-    controller: 57
+    controller: 10
     channel: 0
 
   - sequence: x
@@ -319,7 +319,7 @@ mapping:
       - macro 2
     type: analog
     increment: -1
-    controller: 57
+    controller: 10
     channel: 0
 
   - sequence: d
@@ -327,7 +327,7 @@ mapping:
       - macro 2
     type: analog
     increment: 1
-    controller: 58
+    controller: 11
     channel: 0
 
   - sequence: c
@@ -335,7 +335,7 @@ mapping:
       - macro 2
     type: analog
     increment: -1
-    controller: 58
+    controller: 11
     channel: 0
 
   - sequence: f
@@ -343,7 +343,7 @@ mapping:
       - macro 2
     type: analog
     increment: 1
-    controller: 59
+    controller: 12
     channel: 0
 
   - sequence: v
@@ -351,7 +351,7 @@ mapping:
       - macro 2
     type: analog
     increment: -1
-    controller: 59
+    controller: 12
     channel: 0
 
   - sequence: g
@@ -359,7 +359,7 @@ mapping:
       - macro 2
     type: analog
     increment: 1
-    controller: 60
+    controller: 13
     channel: 0
 
   - sequence: b
@@ -367,7 +367,7 @@ mapping:
       - macro 2
     type: analog
     increment: -1
-    controller: 60
+    controller: 13
     channel: 0
 
   - sequence: h
@@ -375,7 +375,7 @@ mapping:
       - macro 2
     type: analog
     increment: 1
-    controller: 61
+    controller: 14
     channel: 0
 
   - sequence: n
@@ -383,7 +383,7 @@ mapping:
       - macro 2
     type: analog
     increment: -1
-    controller: 61
+    controller: 14
     channel: 0
 
   - sequence: j
@@ -391,7 +391,7 @@ mapping:
       - macro 2
     type: analog
     increment: 1
-    controller: 62
+    controller: 15
     channel: 0
 
   - sequence: ','
@@ -399,7 +399,7 @@ mapping:
       - macro 2
     type: analog
     increment: -1
-    controller: 62
+    controller: 15
     channel: 0
 
   - sequence: k
@@ -407,7 +407,7 @@ mapping:
       - macro 2
     type: analog
     increment: 1
-    controller: 63
+    controller: 16
     channel: 0
 
   - sequence: ';'
@@ -415,5 +415,5 @@ mapping:
       - macro 2
     type: analog
     increment: -1
-    controller: 63
+    controller: 16
     channel: 0
