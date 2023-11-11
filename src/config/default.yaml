@@ -34,6 +34,7 @@ pages:
     id: macro 2
 
 mapping:
+  # track 1 solo
   - sequence: a
     pages:
       - track 1
@@ -48,6 +49,125 @@ mapping:
       - macro 2
     type: digital
     controller: 28
+    channel: 0
+
+  # track 2 solo
+  - sequence: z
+    pages:
+      - track 1
+      - track 2
+      - track 3
+      - track 4
+      - track 5
+      - track 6
+      - track 7
+      - track 8
+      - macro 1
+      - macro 2
+    type: digital
+    controller: 29
+    channel: 0
+
+# track 3 solo
+  - sequence: e
+    pages:
+      - track 1
+      - track 2
+      - track 3
+      - track 4
+      - track 5
+      - track 6
+      - track 7
+      - track 8
+      - macro 1
+      - macro 2
+    type: digital
+    controller: 30
+    channel: 0
+
+# track 4 solo
+  - sequence: r
+    pages:
+      - track 1
+      - track 2
+      - track 3
+      - track 4
+      - track 5
+      - track 6
+      - track 7
+      - track 8
+      - macro 1
+      - macro 2
+    type: digital
+    controller: 31
+    channel: 0
+
+# track 5 solo
+  - sequence: t
+    pages:
+      - track 1
+      - track 2
+      - track 3
+      - track 4
+      - track 5
+      - track 6
+      - track 7
+      - track 8
+      - macro 1
+      - macro 2
+    type: digital
+    controller: 32
+    channel: 0
+
+# track 6 solo
+  - sequence: y
+    pages:
+      - track 1
+      - track 2
+      - track 3
+      - track 4
+      - track 5
+      - track 6
+      - track 7
+      - track 8
+      - macro 1
+      - macro 2
+    type: digital
+    controller: 33
+    channel: 0
+
+# track 7 solo
+  - sequence: u
+    pages:
+      - track 1
+      - track 2
+      - track 3
+      - track 4
+      - track 5
+      - track 6
+      - track 7
+      - track 8
+      - macro 1
+      - macro 2
+    type: digital
+    controller: 34
+    channel: 0
+
+# track 8 solo
+  - sequence: i
+    pages:
+      - track 1
+      - track 2
+      - track 3
+      - track 4
+      - track 5
+      - track 6
+      - track 7
+      - track 8
+      - macro 1
+      - macro 2
+    type: digital
+    controller: 35
     channel: 0
 
   - sequence: q
