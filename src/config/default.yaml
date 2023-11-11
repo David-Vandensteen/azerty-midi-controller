@@ -1,5 +1,5 @@
-midiIn: 'Gestionnaire IAC Bus 1'
-midiOut: 'Gestionnaire IAC Bus 1'
+midiIn: 'IAC amc-receiver'
+midiOut: 'IAC amc-sender'
 port: 8080
 
 pages:
@@ -71,7 +71,7 @@ mapping:
       - track 3
     type: analog
     increment: 1
-    controller: 19
+    controller: 22
     channel: 0
 
   - sequence: w
@@ -79,7 +79,7 @@ mapping:
       - track 3
     type: analog
     increment: -1
-    controller: 19
+    controller: 22
     channel: 0
 
   - sequence: q
@@ -87,7 +87,7 @@ mapping:
       - track 4
     type: analog
     increment: 1
-    controller: 20
+    controller: 23
     channel: 0
 
   - sequence: w
@@ -95,7 +95,7 @@ mapping:
       - track 4
     type: analog
     increment: -1
-    controller: 20
+    controller: 23
     channel: 0
 
   - sequence: q
@@ -103,7 +103,7 @@ mapping:
       - track 5
     type: analog
     increment: 1
-    controller: 21
+    controller: 24
     channel: 0
 
   - sequence: w
@@ -111,7 +111,7 @@ mapping:
       - track 5
     type: analog
     increment: -1
-    controller: 21
+    controller: 24
     channel: 0
 
   - sequence: q
@@ -119,7 +119,7 @@ mapping:
       - track 6
     type: analog
     increment: 1
-    controller: 22
+    controller: 25
     channel: 0
 
   - sequence: w
@@ -127,7 +127,7 @@ mapping:
       - track 6
     type: analog
     increment: -1
-    controller: 22
+    controller: 25
     channel: 0
 
   - sequence: q
@@ -135,7 +135,7 @@ mapping:
       - track 7
     type: analog
     increment: 1
-    controller: 23
+    controller: 26
     channel: 0
 
   - sequence: w
@@ -143,7 +143,7 @@ mapping:
       - track 7
     type: analog
     increment: -1
-    controller: 23
+    controller: 26
     channel: 0
 
   - sequence: q
@@ -151,7 +151,7 @@ mapping:
       - track 8
     type: analog
     increment: 1
-    controller: 24
+    controller: 27
     channel: 0
 
   - sequence: w
@@ -159,7 +159,7 @@ mapping:
       - track 8
     type: analog
     increment: -1
-    controller: 24
+    controller: 27
     channel: 0
 
   - sequence: q
@@ -167,7 +167,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 1
+    controller: 74
     channel: 0
 
   - sequence: w
@@ -175,7 +175,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 1
+    controller: 74
     channel: 0
 
   - sequence: s
@@ -183,7 +183,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 2
+    controller: 71
     channel: 0
 
   - sequence: x
@@ -191,7 +191,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 2
+    controller: 71
     channel: 0
 
   - sequence: d
@@ -199,7 +199,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 3
+    controller: 79
     channel: 0
 
   - sequence: c
@@ -207,7 +207,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 3
+    controller: 79
     channel: 0
 
   - sequence: f
@@ -215,7 +215,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 4
+    controller: 72
     channel: 0
 
   - sequence: v
@@ -223,7 +223,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 4
+    controller: 72
     channel: 0
 
   - sequence: g
@@ -231,7 +231,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 5
+    controller: 73
     channel: 0
 
   - sequence: b
@@ -239,7 +239,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 5
+    controller: 73
     channel: 0
 
   - sequence: h
@@ -247,7 +247,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 6
+    controller: 19
     channel: 0
 
   - sequence: n
@@ -255,7 +255,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 6
+    controller: 19
     channel: 0
 
   - sequence: j
@@ -263,7 +263,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 7
+    controller: 20
     channel: 0
 
   - sequence: ','
@@ -271,7 +271,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 7
+    controller: 20
     channel: 0
 
   - sequence: k
@@ -279,7 +279,7 @@ mapping:
       - macro 1
     type: analog
     increment: 1
-    controller: 8
+    controller: 21
     channel: 0
 
   - sequence: ';'
@@ -287,7 +287,7 @@ mapping:
       - macro 1
     type: analog
     increment: -1
-    controller: 8
+    controller: 21
     channel: 0
 
   - sequence: q
