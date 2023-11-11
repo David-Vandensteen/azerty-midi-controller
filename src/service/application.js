@@ -65,9 +65,10 @@ export default class ApplicationService {
       { controller: cc, channel: c, value: nextMidiValue },
     );
 
-    log.dev('set', 'controller', midiMessage.controller, 'channel', midiMessage.channel, 'value', midiMessage.value);
+    log.dev('set in store', 'controller', midiMessage.controller, 'channel', midiMessage.channel, 'value', midiMessage.value);
 
     this.#midiControllerStore.set(midiMessage.controller, midiMessage.channel, midiMessage.value);
+    log.dev('midi send', midiMessage);
     this.#midiOutInstance.send('cc', midiMessage);
   }
 

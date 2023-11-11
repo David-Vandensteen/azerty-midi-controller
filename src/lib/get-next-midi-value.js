@@ -9,7 +9,7 @@ const getNextMidiValue = (midiControllerStore, type, controller, channel, increm
   let toValue;
 
   if (type === 'analog') toValue = fromValue + increment;
-  if (type === 'digital') toValue = (fromValue > 0) ? 0 : 127;
+  if (type === 'digital') toValue = (fromValue > 0) ? 1 : 127; // TODO parametric on off values
 
   return MidiNormalizer.value(toValue);
 };
