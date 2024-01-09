@@ -1,5 +1,5 @@
-midiIn: 'IAC amc-receiver'
-midiOut: 'IAC amc-sender'
+midiIn: 'IAC AMC-IN'
+midiOut: 'IAC AMC-OUT'
 port: 8080
 
 pages:
