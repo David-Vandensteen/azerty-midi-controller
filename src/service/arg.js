@@ -4,7 +4,7 @@ import {
   author,
   version,
   license,
-} from '#src/lib/package';
+} from 'package-reader';
 
 const { log } = console;
 
