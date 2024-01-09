@@ -23,18 +23,18 @@
     "chalk": "^5.3.0",
     "custom-console-log": "github:David-Vandensteen/custom-console-log#release/1.0.0",
     "easymidi": "^3.1.0",
-    "fs-extra": "^11.1.1",
+    "fs-extra": "^11.2.0",
     "midi-controller-store": "github:David-Vandensteen/midi-controller-store#release/1.0.0",
     "midi-normalizer": "github:David-Vandensteen/midi-normalizer#release/1.0.0",
     "net-keyboard": "git@github.com:David-Vandensteen/net-keyboard.git#release/1.0.0",
     "remote-midi": "git@github.com:David-Vandensteen/remote-midi.git#release/0.0.1",
-    "yaml": "^2.3.2"
+    "yaml": "^2.3.4"
   },
   "devDependencies": {
-    "eslint": "^8.50.0",
+    "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.28.1",
-    "nodemon": "^3.0.1"
+    "eslint-plugin-import": "^2.29.1",
+    "nodemon": "^3.0.2"
   }
 }
