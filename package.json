@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "cli": "node bin/azerty-midi-controller.js",
-    "start": "node src/index.js",
+    "start": "node bin/azerty-midi-controller.js",
     "serve": "nodemon --watch src -e js src/index.js",
     "master": "node src/index.js -m master",
     "slave": "node src/index.js -m slave",
