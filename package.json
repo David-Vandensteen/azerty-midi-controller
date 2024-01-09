@@ -28,7 +28,6 @@
     "midi-normalizer": "github:David-Vandensteen/midi-normalizer#release/1.0.0",
     "net-keyboard": "git@github.com:David-Vandensteen/net-keyboard.git#release/1.0.0",
     "package-reader": "github:David-Vandensteen/package-reader#release/1.0.0",
-    "remote-midi": "git@github.com:David-Vandensteen/remote-midi.git#release/0.0.1",
     "yaml": "^2.3.4"
   },
   "devDependencies": {
