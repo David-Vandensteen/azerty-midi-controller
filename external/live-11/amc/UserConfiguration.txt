@@ -6,8 +6,8 @@
 # The primary MIDI channel that the controller uses in
 # the range of 0-15.
 GlobalChannel: 0
-InputName: mcc-out
-OutputName: mcc-in
+InputName: IAC AMC-OUT
+OutputName: IAC AMC-IN
 # ======================================================
 # Control Settings Information
 # ======================================================
