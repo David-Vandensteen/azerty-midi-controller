@@ -1,0 +1,40 @@
+midiIn: 'IAC AMC-IN'
+midiOut: 'IAC AMC-OUT'
+port: 8080
+
+sceneNavigation:
+  next: d
+  previous: q
+
+scenes:
+  - id: track 1
+    sequence: '&'
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 17
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 17
+        channel: 0
+  - id: track 2
+    sequence: é
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 18
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 18
+        channel: 0
+
