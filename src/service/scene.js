@@ -17,7 +17,6 @@ export default class SceneService extends EventEmitter {
     this.#scene = scene;
     this.#scenes = scenes;
     this.#mappingService = new MappingService();
-    this.#mappingService.set(this.#scene.mappings);
 
     if (sceneNavigation) {
       this.#sceneNavigation = new SceneNavigationModel(
@@ -28,6 +27,8 @@ export default class SceneService extends EventEmitter {
 
     if (this.#scene.label) log.magenta('scene', this.#scene.label);
     else log.magenta('scene', this.#scene.id);
+
+    this.#mappingService.set(this.#scene.mappings);
 
     this.#listenMappingService();
   }
