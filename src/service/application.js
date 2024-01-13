@@ -2,7 +2,7 @@ import { NetKeyboardServer } from 'net-keyboard';
 import { SceneService } from '#src/service/scene';
 import { MidiService } from '#src/service/midi';
 import { log } from 'custom-console-log';
-import { ApplicationError } from '#src/model/error/application';
+import { AzertyMidiControllerError } from '#src/model/error';
 
 export default class ApplicationService {
   #config;
@@ -12,7 +12,7 @@ export default class ApplicationService {
   #sceneService;
 
   constructor(config) {
-    if (config === undefined) throw new ApplicationError('config is undefined');
+    if (config === undefined) throw new AzertyMidiControllerError('config is undefined');
     this.#config = config;
 
     this.#midiService = new MidiService(

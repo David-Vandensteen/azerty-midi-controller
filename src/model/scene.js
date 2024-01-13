@@ -1,11 +1,11 @@
 import assert from 'node:assert';
 import { MappingModel } from '#src/model/mapping';
-import { ObjectError } from '#src/model/error';
+import { SceneError } from '#src/model/error';
 
 export default class SceneModel {
   constructor(id, mappings, { sequence, label } = {}) {
-    assert(typeof id === 'string' || typeof id === 'number', new ObjectError('invalid id'));
-    assert(Array.isArray(mappings), new ObjectError('invalid mapping'));
+    assert(typeof id === 'string' || typeof id === 'number', new SceneError('invalid id'));
+    assert(Array.isArray(mappings), new SceneError('invalid mapping'));
 
     this.id = id;
 
@@ -23,12 +23,12 @@ export default class SceneModel {
     );
 
     if (sequence) {
-      assert(typeof sequence === 'string', new ObjectError('invalid sequence'));
+      assert(typeof sequence === 'string', new SceneError('invalid sequence'));
       this.sequence = sequence;
     }
 
     if (label) {
-      assert(typeof label === 'string', new ObjectError('invalid label'));
+      assert(typeof label === 'string', new SceneError('invalid label'));
       this.label = label;
     }
   }
