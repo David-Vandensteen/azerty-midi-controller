@@ -25,7 +25,7 @@ export default class MidiService {
     }
 
     this.#midiStore = MidiControllerStore.getInstance();
-    this.#listenMidi();
+    if (this.#midiInInstance) this.#listenMidi();
   }
 
   #listenMidi() {
