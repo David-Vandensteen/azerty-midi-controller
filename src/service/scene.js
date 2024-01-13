@@ -26,6 +26,9 @@ export default class SceneService extends EventEmitter {
       );
     }
 
+    if (this.#scene.label) log.magenta('scene', this.#scene.label);
+    else log.magenta('scene', this.#scene.id);
+
     this.#listenMappingService();
   }
 
@@ -42,6 +45,10 @@ export default class SceneService extends EventEmitter {
     if (index >= this.#scenes.length) index = 0;
     this.#scene = this.#scenes[index];
     this.#mappingService.set(this.#scene.mappings);
+
+    if (this.#scene.label) log.magenta('scene', this.#scene.label);
+    else log.magenta('scene', this.#scene.id);
+
     return this;
   }
 
@@ -50,6 +57,10 @@ export default class SceneService extends EventEmitter {
     if (index < 0) index = this.#scenes.length - 1;
     this.#scene = this.#scenes[index];
     this.#mappingService.set(this.#scene.mappings);
+
+    if (this.#scene.label) log.magenta('scene', this.#scene.label);
+    else log.magenta('scene', this.#scene.id);
+
     return this;
   }
 
@@ -57,11 +68,18 @@ export default class SceneService extends EventEmitter {
     if (sequence === this.#sceneNavigation?.next) this.#next();
     if (sequence === this.#sceneNavigation?.previous) this.#previous();
 
+    const { id } = this.#scene;
+
     this.#scene = this.#scenes.find(
       ({ sequence: sceneSequence }) => sceneSequence === sequence,
     ) || this.#scene;
 
-    this.#mappingService.set(this.#scene.mappings);
+    if (id !== this.#scene.id || this.#scene?.sequence === sequence) {
+      this.#mappingService.set(this.#scene.mappings);
+      if (this.#scene.label) log.magenta('scene', this.#scene.label);
+      else log.magenta('scene', this.#scene.id);
+    }
+
     this.#mappingService.handle(sequence);
 
     return this;
