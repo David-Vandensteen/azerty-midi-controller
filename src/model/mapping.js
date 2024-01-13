@@ -1,21 +1,20 @@
-import { Model } from '#src/model/model';
-import { MappingError } from '#src/model/error';
+import assert from 'node:assert';
+import { TypeModel } from '#src/model/type';
+import { ObjectError } from '#src/model/error';
 
-export default class MappingModel extends Model {
-  constructor({
-    sequence, pages, type, increment, controller, channel,
-  } = {}) {
-    if (sequence === undefined ?? sequence === null) throw new MappingError('sequence is undefined or null');
-    if (pages === undefined ?? pages === null) throw new MappingError('pages is undefined or null');
-    if (type === undefined ?? type === null) throw new MappingError('type is undefined or null');
-    if (type !== 'analog' && type !== 'digital') throw new MappingError('unsupported type');
-    if (type === 'analog' && (increment === undefined ?? increment === null)) throw new MappingError('increment is undefined or null');
-    if (controller === undefined ?? controller === null) throw new MappingError('controller is undefined or null');
-    if (channel === undefined ?? channel === null) throw new MappingError('channel is undefined or null');
+export default class MappingModel {
+  constructor(sequence, type, controller, channel, { increment, label } = {}) {
+    assert(typeof sequence === 'string', new ObjectError('invalid mapping sequence'));
+    assert(typeof controller === 'number', new ObjectError('invalid mapping controller'));
+    assert(typeof channel === 'number', new ObjectError('invalid mapping channel'));
 
-    super({
-      sequence, pages, type, increment, controller, channel,
-    });
+    this.sequence = sequence;
+    this.type = new TypeModel(type);
+    this.controller = controller;
+    this.channel = channel;
+
+    if (increment) this.increment = increment;
+    if (label) this.label = label;
   }
 }
 

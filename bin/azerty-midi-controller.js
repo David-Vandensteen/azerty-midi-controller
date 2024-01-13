@@ -1,21 +1,16 @@
 #! /usr/bin/env node
-import { ConfigLoaderService } from '#src/service/config-loader';
+import { ConfigLoaderService } from '#src/service/config_loader';
 import { argService } from '#src/service/arg';
 import { ApplicationService } from '#src/index';
+import ON_DEATH from 'death';
 
-const config = new ConfigLoaderService(argService.get().config).get();
-const options = {};
+const runApplication = () => {
+  const config = new ConfigLoaderService(argService.get().config).get();
+  const application = new ApplicationService(config);
 
-if (config.midiIn) options.midiIn = config.midiIn;
-if (config.midiOut) options.midiOut = config.midiOut;
+  ON_DEATH(() => { application.dispose(); });
 
-const application = new ApplicationService(
-  config.port,
-  config.pages,
-  config.mapping,
-  options ?? {},
-);
+  application.run();
+};
 
-if (options?.midiIn ?? options?.midiOut) application.midiConnect();
-
-application.serve();
+runApplication();

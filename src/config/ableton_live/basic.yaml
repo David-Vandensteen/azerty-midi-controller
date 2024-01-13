@@ -1,0 +1,349 @@
+midiIn: 'IAC AMC-IN'
+midiOut: 'IAC AMC-OUT'
+port: 8080
+
+sceneNavigation:
+  next: d
+  previous: q
+
+scenes:
+  - id: track 1
+    sequence: '&'
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 17
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 17
+        channel: 0
+  - id: track 2
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 18
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 18
+        channel: 0
+  - id: track 3
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 22
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 22
+        channel: 0
+  - id: track 4
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 23
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 23
+        channel: 0
+  - id: track 5
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 24
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 24
+        channel: 0
+  - id: track 6
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 25
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 25
+        channel: 0
+  - id: track 7
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 26
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 26
+        channel: 0
+  - id: track 8
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 27
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 27
+        channel: 0
+  - id: encoder 1
+    sequence: é
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 74
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 74
+        channel: 0
+  - id: encoder 2
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 71
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 71
+        channel: 0
+  - id: encoder 3
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 79
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 79
+        channel: 0
+  - id: encoder 4
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 72
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 72
+        channel: 0
+  - id: encoder 5
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 73
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 73
+        channel: 0
+  - id: encoder 6
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 19
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 19
+        channel: 0
+  - id: encoder 7
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 20
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 20
+        channel: 0
+  - id: encoder 8
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 21
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 21
+        channel: 0
+  - id: encoder 9
+    sequence: '"'
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 9
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 9
+        channel: 0
+  - id: encoder 10
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 10
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 10
+        channel: 0
+  - id: encoder 11
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 11
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 11
+        channel: 0
+  - id: encoder 12
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 12
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 12
+        channel: 0
+  - id: encoder 13
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 13
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 13
+        channel: 0
+  - id: encoder 14
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 14
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 14
+        channel: 0
+  - id: encoder 15
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 15
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 15
+        channel: 0
+  - id: encoder 16
+    mappings:
+      - sequence: z
+        label: volume
+        type: analog
+        increment: 1
+        controller: 16
+        channel: 0
+      - sequence: s
+        label: volume
+        type: analog
+        increment: -1
+        controller: 16
+        channel: 0
+
