@@ -61,6 +61,7 @@ export default class SceneService extends EventEmitter {
       ({ sequence: sceneSequence }) => sceneSequence === sequence,
     ) || this.#scene;
 
+    this.#mappingService.set(this.#scene.mappings);
     this.#mappingService.handle(sequence);
 
     return this;
