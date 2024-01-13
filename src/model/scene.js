@@ -3,13 +3,11 @@ import { MappingModel } from '#src/model/mapping';
 import { ObjectError } from '#src/model/error';
 
 export default class SceneModel {
-  constructor(id, sequence, mappings, { label } = {}) {
-    assert(typeof id === 'string' || typeof id === 'number', new ObjectError('invalid scene id'));
-    assert(typeof sequence === 'string', new ObjectError('invalid scene sequence'));
-    assert(Array.isArray(mappings), new ObjectError('invalid scene mapping'));
+  constructor(id, mappings, { sequence, label } = {}) {
+    assert(typeof id === 'string' || typeof id === 'number', new ObjectError('invalid id'));
+    assert(Array.isArray(mappings), new ObjectError('invalid mapping'));
 
     this.id = id;
-    this.sequence = sequence;
 
     this.mappings = mappings.map(
       (mapping) => new MappingModel(
@@ -24,7 +22,15 @@ export default class SceneModel {
       ),
     );
 
-    if (label !== undefined) this.label = label;
+    if (sequence) {
+      assert(typeof sequence === 'string', new ObjectError('invalid sequence'));
+      this.sequence = sequence;
+    }
+
+    if (label) {
+      assert(typeof label === 'string', new ObjectError('invalid label'));
+      this.label = label;
+    }
   }
 }
 

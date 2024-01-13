@@ -13,9 +13,8 @@ export default class ConfigModel {
     this.scenes = scenes.map(
       (scene) => new SceneModel(
         scene.id,
-        scene.sequence,
         scene.mappings,
-        { label: scene.label },
+        { sequence: scene.sequence, label: scene.label },
       ),
     );
 
