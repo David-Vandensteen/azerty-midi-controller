@@ -298,10 +298,10 @@ MixerButtonsToggle: False
 # transport-related features.
 
 # StopButton stops playback.
-StopButton: -1
+StopButton: 46
 
 # PlayButton starts playback.
-PlayButton: -1
+PlayButton: 47
 
 # RecButton toggles Arrangement Record.
 RecButton: -1
