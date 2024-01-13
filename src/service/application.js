@@ -67,7 +67,10 @@ export default class ApplicationService {
     this.#sceneService = new SceneService(
       this.#config.scenes[0],
       this.#config.scenes,
-      { sceneNavigation: this.#config.sceneNavigation },
+      {
+        sceneNavigation: this.#config.sceneNavigation,
+        global: this.#config.global,
+      },
     );
 
     this

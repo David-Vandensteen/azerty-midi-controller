@@ -19,6 +19,7 @@ export default class ConfigLoaderService {
         midiIn: this.#config.midiIn,
         port: this.#config.port,
         sceneNavigation: this.#config.sceneNavigation,
+        global: this.#config.global,
       },
     ))();
   }

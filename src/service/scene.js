@@ -12,11 +12,11 @@ export default class SceneService extends EventEmitter {
 
   #mappingService;
 
-  constructor(scene, scenes, { sceneNavigation } = {}) {
+  constructor(scene, scenes, { sceneNavigation, global } = {}) {
     super();
     this.#scene = scene;
     this.#scenes = scenes;
-    this.#mappingService = new MappingService();
+    this.#mappingService = new MappingService({ globalMappings: global?.mappings });
 
     if (sceneNavigation) {
       this.#sceneNavigation = new SceneNavigationModel(

@@ -1,10 +1,16 @@
 import assert from 'node:assert';
 import { SceneNavigationModel } from '#src/model/scene_navigation';
+import { GlobalModel } from '#src/model/global';
 import { SceneModel } from '#src/model/scene';
 import { ConfigError } from '#src/model/error';
 
 export default class ConfigModel {
-  constructor(midiOut, scenes, { midiIn, port, sceneNavigation } = {}) {
+  constructor(midiOut, scenes, {
+    midiIn,
+    port,
+    sceneNavigation,
+    global,
+  } = {}) {
     assert(typeof midiOut === 'string', new ConfigError('invalid midiOut'));
     assert(Array.isArray(scenes), new ConfigError('invalid scenes'));
 
@@ -33,6 +39,10 @@ export default class ConfigModel {
         sceneNavigation.next,
         sceneNavigation.previous,
       );
+    }
+
+    if (global) {
+      this.global = new GlobalModel({ mappings: global.mappings });
     }
   }
 }
