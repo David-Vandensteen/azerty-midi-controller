@@ -11,13 +11,13 @@ scenes:
     sequence: '&'
     mappings:
       - sequence: z
-        label: volume
+        label: volume +
         type: analog
         increment: 1
         controller: 17
         channel: 0
       - sequence: s
-        label: volume
+        label: volume -
         type: analog
         increment: -1
         controller: 17
@@ -25,13 +25,13 @@ scenes:
   - id: track 2
     mappings:
       - sequence: z
-        label: volume
+        label: volume +
         type: analog
         increment: 1
         controller: 18
         channel: 0
       - sequence: s
-        label: volume
+        label: volume -
         type: analog
         increment: -1
         controller: 18
@@ -39,13 +39,13 @@ scenes:
   - id: track 3
     mappings:
       - sequence: z
-        label: volume
+        label: volume +
         type: analog
         increment: 1
         controller: 22
         channel: 0
       - sequence: s
-        label: volume
+        label: volume -
         type: analog
         increment: -1
         controller: 22
@@ -53,13 +53,13 @@ scenes:
   - id: track 4
     mappings:
       - sequence: z
-        label: volume
+        label: volume +
         type: analog
         increment: 1
         controller: 23
         channel: 0
       - sequence: s
-        label: volume
+        label: volume -
         type: analog
         increment: -1
         controller: 23
@@ -67,13 +67,13 @@ scenes:
   - id: track 5
     mappings:
       - sequence: z
-        label: volume
+        label: volume +
         type: analog
         increment: 1
         controller: 24
         channel: 0
       - sequence: s
-        label: volume
+        label: volume -
         type: analog
         increment: -1
         controller: 24
@@ -81,13 +81,13 @@ scenes:
   - id: track 6
     mappings:
       - sequence: z
-        label: volume
+        label: volume +
         type: analog
         increment: 1
         controller: 25
         channel: 0
       - sequence: s
-        label: volume
+        label: volume -
         type: analog
         increment: -1
         controller: 25
@@ -95,13 +95,13 @@ scenes:
   - id: track 7
     mappings:
       - sequence: z
-        label: volume
+        label: volume +
         type: analog
         increment: 1
         controller: 26
         channel: 0
       - sequence: s
-        label: volume
+        label: volume -
         type: analog
         increment: -1
         controller: 26
@@ -109,13 +109,13 @@ scenes:
   - id: track 8
     mappings:
       - sequence: z
-        label: volume
+        label: volume +
         type: analog
         increment: 1
         controller: 27
         channel: 0
       - sequence: s
-        label: volume
+        label: volume -
         type: analog
         increment: -1
         controller: 27
@@ -124,13 +124,13 @@ scenes:
     sequence: é
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 74
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 74
@@ -138,13 +138,13 @@ scenes:
   - id: encoder 2
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 71
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 71
@@ -152,13 +152,13 @@ scenes:
   - id: encoder 3
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 79
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 79
@@ -166,13 +166,13 @@ scenes:
   - id: encoder 4
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 72
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 72
@@ -180,13 +180,13 @@ scenes:
   - id: encoder 5
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 73
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 73
@@ -194,7 +194,7 @@ scenes:
   - id: encoder 6
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 19
@@ -208,13 +208,13 @@ scenes:
   - id: encoder 7
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 20
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 20
@@ -222,13 +222,13 @@ scenes:
   - id: encoder 8
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 21
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 21
@@ -237,13 +237,13 @@ scenes:
     sequence: '"'
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 9
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 9
@@ -251,13 +251,13 @@ scenes:
   - id: encoder 10
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 10
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 10
@@ -265,13 +265,13 @@ scenes:
   - id: encoder 11
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 11
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 11
@@ -279,13 +279,13 @@ scenes:
   - id: encoder 12
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 12
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 12
@@ -293,13 +293,13 @@ scenes:
   - id: encoder 13
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 13
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 13
@@ -307,13 +307,13 @@ scenes:
   - id: encoder 14
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 14
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 14
@@ -321,13 +321,13 @@ scenes:
   - id: encoder 15
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 15
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 15
@@ -335,13 +335,13 @@ scenes:
   - id: encoder 16
     mappings:
       - sequence: z
-        label: volume
+        label: encoder +
         type: analog
         increment: 1
         controller: 16
         channel: 0
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 16
