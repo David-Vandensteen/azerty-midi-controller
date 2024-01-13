@@ -31,8 +31,8 @@ export default class ApplicationService {
 
   #listenKeyboard() {
     log.blue('listen keyboard from', this.#config.port);
-    new NetKeyboardServer(this.#config.port)
-      .on('message', (message) => {
+    new NetKeyboardServer({ port: this.#config.port })
+      .on('data', (message) => {
         log.dev('receive keyboard message', message);
         this.#handleKeyboard(message);
       })
