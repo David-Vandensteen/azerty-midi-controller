@@ -45,7 +45,12 @@ export default class MidiService {
     const currentValue = this.#midiStore.getValue(controller, channel) || 0;
     let computeValue;
 
-    if (type === 'analog') computeValue = currentValue + increment;
+    if (type === 'analog') {
+      computeValue = currentValue + increment;
+      if (computeValue > 127) computeValue = 127;
+      if (computeValue < 0) computeValue = 0;
+    }
+
     if (type === 'digital') computeValue = currentValue ? 1 : 127; // TODO parametric on off values in conf
 
     this.#midiStore.set(controller, channel, computeValue);
