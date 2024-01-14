@@ -11,25 +11,25 @@ global:
     - sequence: "p"
       label: play
       type: digital
-      controller: 47
+      controller: 42
       channel: 0
 
     - sequence: " "
       label: stop
       type: digital
-      controller: 46
+      controller: 41
       channel: 0
 
     - sequence: "\u001b[C"
       label: forward
       type: digital
-      controller: 45
+      controller: 44
       channel: 0
 
     - sequence: "\u001b[D"
       label: backward
       type: digital
-      controller: 44
+      controller: 43
       channel: 0
 
 scenes:
@@ -72,14 +72,14 @@ scenes:
         label: volume +
         type: analog
         increment: 1
-        controller: 22
+        controller: 19
         channel: 0
 
       - sequence: s
         label: volume -
         type: analog
         increment: -1
-        controller: 22
+        controller: 19
         channel: 0
 
   - id: track 4
@@ -88,14 +88,14 @@ scenes:
         label: volume +
         type: analog
         increment: 1
-        controller: 23
+        controller: 20
         channel: 0
 
       - sequence: s
         label: volume -
         type: analog
         increment: -1
-        controller: 23
+        controller: 20
         channel: 0
 
   - id: track 5
@@ -104,14 +104,14 @@ scenes:
         label: volume +
         type: analog
         increment: 1
-        controller: 24
+        controller: 21
         channel: 0
 
       - sequence: s
         label: volume -
         type: analog
         increment: -1
-        controller: 24
+        controller: 21
         channel: 0
 
   - id: track 6
@@ -120,14 +120,14 @@ scenes:
         label: volume +
         type: analog
         increment: 1
-        controller: 25
+        controller: 22
         channel: 0
 
       - sequence: s
         label: volume -
         type: analog
         increment: -1
-        controller: 25
+        controller: 22
         channel: 0
 
   - id: track 7
@@ -136,14 +136,14 @@ scenes:
         label: volume +
         type: analog
         increment: 1
-        controller: 26
+        controller: 23
         channel: 0
 
       - sequence: s
         label: volume -
         type: analog
         increment: -1
-        controller: 26
+        controller: 23
         channel: 0
 
   - id: track 8
@@ -152,14 +152,14 @@ scenes:
         label: volume +
         type: analog
         increment: 1
-        controller: 27
+        controller: 24
         channel: 0
 
       - sequence: s
         label: volume -
         type: analog
         increment: -1
-        controller: 27
+        controller: 24
         channel: 0
 
   - id: encoder 1
@@ -169,14 +169,14 @@ scenes:
         label: encoder +
         type: analog
         increment: 1
-        controller: 74
+        controller: 1
         channel: 0
 
       - sequence: s
         label: encoder -
         type: analog
         increment: -1
-        controller: 74
+        controller: 1
         channel: 0
 
   - id: encoder 2
@@ -185,14 +185,14 @@ scenes:
         label: encoder +
         type: analog
         increment: 1
-        controller: 71
+        controller: 2
         channel: 0
 
       - sequence: s
         label: encoder -
         type: analog
         increment: -1
-        controller: 71
+        controller: 2
         channel: 0
 
   - id: encoder 3
@@ -201,14 +201,14 @@ scenes:
         label: encoder +
         type: analog
         increment: 1
-        controller: 79
+        controller: 3
         channel: 0
 
       - sequence: s
         label: encoder -
         type: analog
         increment: -1
-        controller: 79
+        controller: 3
         channel: 0
 
   - id: encoder 4
@@ -217,14 +217,14 @@ scenes:
         label: encoder +
         type: analog
         increment: 1
-        controller: 72
+        controller: 4
         channel: 0
 
       - sequence: s
         label: encoder -
         type: analog
         increment: -1
-        controller: 72
+        controller: 4
         channel: 0
 
   - id: encoder 5
@@ -233,14 +233,14 @@ scenes:
         label: encoder +
         type: analog
         increment: 1
-        controller: 73
+        controller: 5
         channel: 0
 
       - sequence: s
         label: encoder -
         type: analog
         increment: -1
-        controller: 73
+        controller: 5
         channel: 0
 
   - id: encoder 6
@@ -249,14 +249,14 @@ scenes:
         label: encoder +
         type: analog
         increment: 1
-        controller: 19
+        controller: 6
         channel: 0
 
       - sequence: s
         label: volume
         type: analog
         increment: -1
-        controller: 19
+        controller: 6
         channel: 0
 
   - id: encoder 7
@@ -265,14 +265,14 @@ scenes:
         label: encoder +
         type: analog
         increment: 1
-        controller: 20
+        controller: 7
         channel: 0
 
       - sequence: s
         label: encoder -
         type: analog
         increment: -1
-        controller: 20
+        controller: 7
         channel: 0
 
   - id: encoder 8
@@ -281,14 +281,14 @@ scenes:
         label: encoder +
         type: analog
         increment: 1
-        controller: 21
+        controller: 8
         channel: 0
 
       - sequence: s
         label: encoder -
         type: analog
         increment: -1
-        controller: 21
+        controller: 8
         channel: 0
 
   - id: encoder 9

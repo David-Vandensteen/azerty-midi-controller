@@ -112,14 +112,14 @@ Pad16Channel: -1
 # control.  If 9 or more Encoders are used, the bank
 # buttons will select two banks of 8 parameters for the
 # Encoders to control.
-Encoder1: 74
-Encoder2: 71
-Encoder3: 79
-Encoder4: 72
-Encoder5: 73
-Encoder6: 19
-Encoder7: 20
-Encoder8: 21
+Encoder1: 1
+Encoder2: 2
+Encoder3: 3
+Encoder4: 4
+Encoder5: 5
+Encoder6: 6
+Encoder7: 7
+Encoder8: 8
 Encoder9: 9
 Encoder10: 10
 Encoder11: 11
@@ -179,12 +179,12 @@ LockButton: -1
 # VolumeSlider1-VolumeSlider8 control Track volume.
 VolumeSlider1: 17
 VolumeSlider2: 18
-VolumeSlider3: 22
-VolumeSlider4: 23
-VolumeSlider5: 24
-VolumeSlider6: 25
-VolumeSlider7: 26
-VolumeSlider8: 27
+VolumeSlider3: 19
+VolumeSlider4: 20
+VolumeSlider5: 21
+VolumeSlider6: 22
+VolumeSlider7: 23
+VolumeSlider8: 24
 Slider1Channel: 0
 Slider2Channel: 0
 Slider3Channel: 0
@@ -231,14 +231,14 @@ TrackMuteButton8: -1
 InvertMuteButtonFeedback: True
 
 # TrackSoloButton1-TrackSoloButton8 control Track soloing.
-TrackSoloButton1: 28
-TrackSoloButton2: 29
-TrackSoloButton3: 30
-TrackSoloButton4: 31
-TrackSoloButton5: 32
-TrackSoloButton6: 33
-TrackSoloButton7: 34
-TrackSoloButton8: 35
+TrackSoloButton1: 25
+TrackSoloButton2: 26
+TrackSoloButton3: 27
+TrackSoloButton4: 28
+TrackSoloButton5: 29
+TrackSoloButton6: 30
+TrackSoloButton7: 31
+TrackSoloButton8: 32
 
 # TrackSelectButton1-TrackSelectButton8 select Tracks.
 TrackSelectButton1: -1
@@ -251,14 +251,14 @@ TrackSelectButton7: -1
 TrackSelectButton8: -1
 
 # TrackArmButton1-TrackArmButton8 control Track arming.
-TrackArmButton1: 36
-TrackArmButton2: 37
-TrackArmButton3: 38
-TrackArmButton4: 39
-TrackArmButton5: 40
-TrackArmButton6: 41
-TrackArmButton7: 42
-TrackArmButton8: 43
+TrackArmButton1: 33
+TrackArmButton2: 34
+TrackArmButton3: 35
+TrackArmButton4: 36
+TrackArmButton5: 37
+TrackArmButton6: 38
+TrackArmButton7: 39
+TrackArmButton8: 40
 
 # NextBankButton and PrevBankButton select the next or
 # previous bank of 8 Tracks for the controls above to
@@ -298,10 +298,10 @@ MixerButtonsToggle: False
 # transport-related features.
 
 # StopButton stops playback.
-StopButton: 46
+StopButton: 41
 
 # PlayButton starts playback.
-PlayButton: 47
+PlayButton: 42
 
 # RecButton toggles Arrangement Record.
 RecButton: -1
@@ -319,10 +319,10 @@ MetroButton: -1
 LoopButton: -1
 
 # RwdButton rewinds playback.
-RwdButton: 44
+RwdButton: 43
 
 # FwdButton fast-forwards playback.
-FfwdButton: 45
+FfwdButton: 44
 
 # PunchInButton controls Punch-In.
 PunchInButton: -1
