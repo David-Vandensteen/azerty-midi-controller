@@ -5,24 +5,26 @@ import { SceneModel } from '#src/model/scene';
 import { ConfigError } from '#src/model/error';
 
 export default class ConfigModel {
-  constructor(midiOut, scenes, {
+  constructor(midiOut, {
     midiIn,
     port,
     sceneNavigation,
+    scenes,
     global,
   } = {}) {
     assert(typeof midiOut === 'string', new ConfigError('invalid midiOut'));
-    assert(Array.isArray(scenes), new ConfigError('invalid scenes'));
 
     this.midiOut = midiOut;
 
-    this.scenes = scenes.map(
-      (scene) => new SceneModel(
-        scene.id,
-        scene.mappings,
-        { sequence: scene.sequence, label: scene.label },
-      ),
-    );
+    if (scenes) {
+      this.scenes = scenes.map(
+        (scene) => new SceneModel(
+          scene.id,
+          scene.mappings,
+          { sequence: scene.sequence, label: scene.label },
+        ),
+      );
+    }
 
     if (midiIn) {
       assert(typeof midiIn === 'string', new ConfigError('invalid midiIn'));

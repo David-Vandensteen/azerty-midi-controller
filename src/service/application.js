@@ -23,8 +23,7 @@ export default class ApplicationService {
 
   #handleKeyboard(message) {
     const { sequence } = JSON.parse(message);
-
-    this.#sceneService.handle(sequence);
+    if (this.#sceneService) this.#sceneService.handle(sequence);
 
     return this;
   }
@@ -65,18 +64,18 @@ export default class ApplicationService {
 
   run() {
     log.green('start application');
-    this.#sceneService = new SceneService(
-      this.#config.scenes[0],
-      this.#config.scenes,
-      {
-        sceneNavigation: this.#config.sceneNavigation,
-        global: this.#config.global,
-      },
-    );
-
-    this
-      .#listenSceneService()
-      .#listenKeyboard();
+    if (this.#config.scenes) {
+      this.#sceneService = new SceneService(
+        this.#config.scenes[0],
+        this.#config.scenes,
+        {
+          sceneNavigation: this.#config.sceneNavigation,
+          global: this.#config.global,
+        },
+      );
+      this.#listenSceneService();
+    }
+    this.#listenKeyboard();
   }
 }
 
