@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { MidiTypeModel } from '#src/model/midi/type'; // TODO move to midi folder
+import { MidiTypeModel } from '#src/model/midi/type';
 import { MidiError } from '#src/model/error';
 
 export default class MidiServiceMessage {
