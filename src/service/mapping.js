@@ -1,36 +1,26 @@
 import EventEmitter from 'events';
-import { log } from 'custom-console-log';
+import { MappingError } from '#src/model/error';
 
 export default class MappingService extends EventEmitter {
   #mappings;
 
-  #globalMappings;
-
-  constructor({ globalMappings } = {}) {
+  constructor(mappings) {
     super();
-    if (globalMappings) this.#globalMappings = globalMappings;
-  }
+    if (mappings === undefined) throw new MappingError('mappings is undefined');
 
-  set(mappings) {
-    this.#mappings = this.#globalMappings !== undefined
-      ? [...mappings, ...this.#globalMappings]
-      : mappings;
-
-    this.#mappings.forEach((mapping) => {
-      if (mapping.label) {
-        log.blue(mapping.label, mapping.sequence);
-      }
-    });
-
-    return this;
+    this.#mappings = mappings;
   }
 
   handle(sequence) {
+    if (sequence === undefined) throw new MappingError('sequence is undefined');
     this.#mappings.forEach((mapping) => {
       if (sequence === mapping.sequence) this.emit('mapping', mapping);
     });
+  }
 
-    return this;
+  set(mappings) {
+    if (mappings === undefined) throw new MappingError('mappings is undefined');
+    this.#mappings = mappings;
   }
 }
 

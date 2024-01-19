@@ -6,6 +6,14 @@ export default class TypeModel {
     assert(type === 'analog' || type === 'digital', new ObjectError('invalid type'));
     this.type = type;
   }
+
+  static get analog() {
+    return 'analog';
+  }
+
+  static get digital() {
+    return 'digital';
+  }
 }
 
 export { TypeModel };

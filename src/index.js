@@ -1,7 +1,5 @@
-import { ApplicationService } from '#src/service/application';
+import { AzertyMidiControllerService } from '#src/service/azerty_midi_controller';
 
-export default ApplicationService;
+export default AzertyMidiControllerService;
 
-export {
-  ApplicationService,
-};
+export { AzertyMidiControllerService };

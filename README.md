@@ -16,10 +16,10 @@ npm i
 
 ## Start
 ```cmd
-npm start -- -c src/config/ableton-live.yaml
+npm start -- -c src/config/ableton_live/basic.yaml
 ```
 
 With debug trace on MacOS
 ```cmd
-NODE_ENV=dev npm start -- -c src/config/ableton-live.yaml
+NODE_ENV=dev npm start -- -c src/config/ableton_live/basic.yaml
 ```

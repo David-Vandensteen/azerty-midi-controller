@@ -1,5 +1,4 @@
 midiOut: 'IAC AMC-OUT'
-#port: 8080
 
 global:
   mappings:
@@ -7,11 +6,3 @@ global:
         controller: 17
         channel: 0
         type: 'digital'
-
-# scenes:
-#   - id: track 1
-#     mappings:
-#       - sequence: z
-#         controller: 17
-#         channel: 0
-#         type: 'digital'

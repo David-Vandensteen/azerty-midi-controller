@@ -1,6 +1,5 @@
 import YamlLoader from '#src/lib/yaml_loader';
 import { ConfigModel } from '#src/model/config';
-
 import { log } from 'custom-console-log';
 
 import {
@@ -16,6 +15,7 @@ export default class ConfigLoaderService {
   #config;
 
   constructor(configFile) {
+    if (configFile === undefined) throw new ConfigError('configFile is undefined');
     log.magenta('try to load', configFile);
     this.#config = YamlLoader(configFile);
     this.#parse();
@@ -34,11 +34,11 @@ export default class ConfigLoaderService {
         },
       ))();
     } catch (err) {
-      if (err instanceof SceneError) throw new SceneError(err.message);
-      else if (err instanceof GlobalError) throw new GlobalError(err.message);
-      else if (err instanceof SceneNavigationError) throw new SceneNavigationError(err.message);
-      else if (err instanceof MappingError) throw new MappingError(err.message);
-      else if (err instanceof TypeError) throw new TypeError(err.message);
+      if (err instanceof SceneError) throw new SceneError(err);
+      else if (err instanceof GlobalError) throw new GlobalError(err);
+      else if (err instanceof SceneNavigationError) throw new SceneNavigationError(err);
+      else if (err instanceof MappingError) throw new MappingError(err);
+      else if (err instanceof TypeError) throw new TypeError(err);
 
       throw new ConfigError(err);
     }

@@ -1,0 +1,27 @@
+midiOut: 'IAC AMC-OUT'
+
+sceneNavigation:
+  next: d
+  previous: q
+
+scenes:
+  - id: track 1
+    mappings:
+      - sequence: a
+        controller: 17
+        channel: 0
+        type: 'digital'
+
+  - id: track 2
+    mappings:
+      - sequence: z
+        controller: 18
+        channel: 0
+        type: 'digital'
+
+  - id: track 3
+    mappings:
+      - sequence: e
+        controller: 19
+        channel: 0
+        type: 'digital'
