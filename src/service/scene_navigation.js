@@ -8,14 +8,13 @@ export default class SceneNavigationService extends EventEmitter {
 
   #scene;
 
-  constructor(sceneNavigation, scene, scenes) {
+  constructor(sceneNavigation, scenes) {
     super();
     if (sceneNavigation === undefined) throw new SceneNavigationError('sceneNavigation is undefined');
-    if (scene === undefined) throw new SceneNavigationError('scene is undefined');
     if (scenes === undefined) throw new SceneNavigationError('scenes is undefined');
 
     this.#sceneNavigation = sceneNavigation;
-    this.#scene = scene;
+    [this.#scene] = scenes;
     this.#scenes = scenes;
   }
 

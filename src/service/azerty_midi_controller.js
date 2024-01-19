@@ -37,8 +37,7 @@ export default class AzertyMidiControllerService {
 
     if (this.#config.sceneNavigation) {
       this.#sceneNavigationService = new SceneNavigationService(
-        this.#config.sceneNavigation, // TODO : remove
-        this.#config.scenes[0],
+        this.#config.sceneNavigation,
         this.#config.scenes,
       );
       this.#listenSceneNavigationService();
@@ -50,10 +49,7 @@ export default class AzertyMidiControllerService {
     }
 
     if (this.#config.scenes) {
-      this.#sceneService = new SceneService(
-        this.#config.scenes[0], // TODO : remove
-        this.#config.scenes,
-      );
+      this.#sceneService = new SceneService(this.#config.scenes);
       this.#listenSceneService();
     }
     this.#listenKeyboard({ forceLocal });
