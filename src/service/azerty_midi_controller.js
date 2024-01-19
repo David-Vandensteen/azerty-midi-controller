@@ -1,4 +1,5 @@
 import { NetKeyboardServer } from 'net-keyboard';
+import { MidiServiceMessage } from '#src/model/midi/service/message';
 import { MidiService } from '#src/service/midi';
 import { SceneNavigationService } from '#src/service/scene_navigation';
 import { GlobalService } from '#src/service/global';
@@ -74,12 +75,7 @@ export default class AzertyMidiControllerService {
   #listenGlobalService() {
     this.#globalService.on('global', (mapping) => {
       log.dev('receive mapping from global', mapping);
-      this.#midiService.send(
-        mapping.controller,
-        mapping.channel,
-        mapping.type,
-        { increment: mapping.increment },
-      );
+      this.#midiService.send(MidiServiceMessage.deserialize(mapping));
     });
   }
 
@@ -91,12 +87,7 @@ export default class AzertyMidiControllerService {
 
     this.#sceneService.on('mapping', (mapping) => {
       log.dev('receive mapping from scene', mapping);
-      this.#midiService.send(
-        mapping.controller,
-        mapping.channel,
-        mapping.type,
-        { increment: mapping?.increment },
-      );
+      this.#midiService.send(MidiServiceMessage.deserialize(mapping));
     });
   }
 
