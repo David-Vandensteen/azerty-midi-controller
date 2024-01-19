@@ -1,7 +1,7 @@
 import easymidi from 'easymidi';
 import { MidiControllerStore } from 'midi-controller-store';
 import { log } from 'custom-console-log';
-import { ServiceError } from '#src/model/error/service';
+import { MidiError } from '#src/model/error';
 
 export default class MidiService {
   #midiInInstance;
@@ -11,10 +11,10 @@ export default class MidiService {
   #midiStore;
 
   constructor(midiOutDeviceName, { midiInDeviceName } = {}) {
+    if (midiOutDeviceName === undefined) throw new MidiError('invalid midiOutDeviceName');
+
     log.magenta('available midi outputs', easymidi.getOutputs());
     log.magenta('available midi inputs', easymidi.getInputs());
-
-    if (midiOutDeviceName === undefined) throw new ServiceError('invalid midiOutDeviceName');
 
     this.#midiOutInstance = new easymidi.Output(midiOutDeviceName);
     log.green('midi out connected', this.#midiOutInstance.name);
@@ -37,10 +37,16 @@ export default class MidiService {
     return this;
   }
 
-  handle(controller, channel, type, { increment }) {
-    if (controller === undefined) throw new ServiceError('invalid controller');
-    if (channel === undefined) throw new ServiceError('invalid channel');
-    if (type === undefined) throw new ServiceError('invalid type');
+  dispose() {
+    log.dev('midi service dispose');
+    if (this.#midiInInstance) this.#midiInInstance.close();
+    this.#midiOutInstance.close();
+  }
+
+  send(controller, channel, type, { increment }) {
+    if (controller === undefined) throw new MidiError('invalid controller');
+    if (channel === undefined) throw new MidiError('invalid channel');
+    if (type === undefined) throw new MidiError('invalid type');
 
     const currentValue = this.#midiStore.getValue(controller, channel) || 0;
     let computeValue;
@@ -61,15 +67,10 @@ export default class MidiService {
       value: computeValue,
     });
 
+    log.dev('send cc midi', controller, channel, computeValue);
     log.dev(this.#midiStore.getValue(controller, channel));
 
     return this;
-  }
-
-  dispose() {
-    log.dev('midi service dispose');
-    if (this.#midiInInstance) this.#midiInInstance.close();
-    this.#midiOutInstance.close();
   }
 }
 
