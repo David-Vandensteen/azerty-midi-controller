@@ -17,7 +17,7 @@ export default class AzertyMidiControllerService {
 
   #sceneService;
 
-  constructor(config) {
+  constructor(config, { forceLocal }) {
     log.green('start application');
 
     if (config === undefined) throw new AzertyMidiControllerError('config is undefined');
@@ -50,7 +50,7 @@ export default class AzertyMidiControllerService {
       this.#listenSceneService();
     }
 
-    this.#listenKeyboard();
+    this.#listenKeyboard({ forceLocal });
   }
 
   #handleKeyboard(message) {
@@ -99,10 +99,13 @@ export default class AzertyMidiControllerService {
     });
   }
 
-  #listenKeyboard() {
-    if (this.#config.port) log.blue('listen keyboard from', this.#config.port);
+  #listenKeyboard({ forceLocal }) {
+    if (this.#config.port && forceLocal === undefined) log.blue('listen keyboard from', this.#config.port);
+    let port;
+    if (forceLocal === undefined) port = this.#config.port;
+    else port = undefined;
 
-    new NetKeyboardServer({ port: this.#config.port })
+    new NetKeyboardServer({ port })
       .on('data', (message) => {
         log.dev('receive keyboard message', message);
         this.#handleKeyboard(message);

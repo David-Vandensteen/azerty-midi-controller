@@ -19,6 +19,8 @@ const showHelp = () => {
   log('');
   log('     Extra options:');
   log('');
+  log('         --force-local');
+  log('');
   log('   --help                      -- show help');
   log('version', version, author, license);
   process.exit(0);
@@ -28,6 +30,7 @@ class ArgService {
   constructor() {
     this.args = arg({
       '--config': String,
+      '--force-local': Boolean,
 
       // Aliases
       '-c': '--config',
@@ -37,6 +40,8 @@ class ArgService {
   get config() { return this.args['--config']; }
 
   get help() { return this.args['--help']; }
+
+  get forceLocal() { return this.args['--force-local']; }
 
   checkArgumentsAndHelp() {
     if (!this.config) showHelp();
