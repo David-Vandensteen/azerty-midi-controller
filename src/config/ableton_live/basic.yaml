@@ -1,6 +1,8 @@
-midiIn: 'IAC AMC-IN'
-midiOut: 'IAC AMC-OUT'
 port: 8080
+
+midi:
+  in: 'IAC AMC-IN'
+  out: 'IAC AMC-OUT'
 
 sceneNavigation:
   next: d

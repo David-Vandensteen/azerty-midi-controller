@@ -11,17 +11,17 @@ export default class MidiService {
 
   #midiStore;
 
-  constructor(midiOutDeviceName, { midiInDeviceName } = {}) {
-    if (midiOutDeviceName === undefined) throw new MidiError('invalid midiOutDeviceName');
+  constructor(midi) {
+    if (midi.out === undefined) throw new MidiError('invalid midiOutDeviceName');
 
     log.magenta('available midi outputs', easymidi.getOutputs());
     log.magenta('available midi inputs', easymidi.getInputs());
 
-    this.#midiOutInstance = new easymidi.Output(midiOutDeviceName);
+    this.#midiOutInstance = new easymidi.Output(midi.out);
     log.green('midi out connected', this.#midiOutInstance.name);
 
-    if (midiInDeviceName) {
-      this.#midiInInstance = new easymidi.Input(midiInDeviceName);
+    if (midi.in) {
+      this.#midiInInstance = new easymidi.Input(midi.in);
       log.green('midi in connected', this.#midiInInstance.name);
     }
 

@@ -30,10 +30,7 @@ export default class AzertyMidiControllerService {
     if (config === undefined) throw new AzertyMidiControllerError('config is undefined');
     this.#config = config;
 
-    this.#midiService = new MidiService(
-      this.#config.midiOut,
-      { midiInDeviceName: this.#config.midiIn },
-    );
+    this.#midiService = new MidiService(this.#config.midi);
 
     if (this.#config.sceneNavigation) {
       this.#sceneNavigationService = new SceneNavigationService(

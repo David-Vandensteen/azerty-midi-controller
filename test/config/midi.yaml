@@ -1,0 +1,3 @@
+midi:
+  in: 'IAC AMC-IN'
+  out: 'IAC AMC-OUT'
