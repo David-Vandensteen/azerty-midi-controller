@@ -1,5 +1,6 @@
 import easymidi from 'easymidi';
 import { MidiControllerStore } from 'midi-controller-store';
+import { TypeModel } from '#src/model/type';
 import { log } from 'custom-console-log';
 import { MidiError } from '#src/model/error';
 
@@ -51,13 +52,13 @@ export default class MidiService {
     const currentValue = this.#midiStore.getValue(controller, channel) || 0;
     let computeValue;
 
-    if (type === 'analog') {
+    if (type === TypeModel.analog) {
       computeValue = currentValue + increment;
       if (computeValue > 127) computeValue = 127;
       if (computeValue < 0) computeValue = 0;
     }
 
-    if (type === 'digital') computeValue = (currentValue <= 1) ? 127 : 1;
+    if (type === TypeModel.digital) computeValue = (currentValue <= 1) ? 127 : 1;
 
     this.#midiStore.set(controller, channel, computeValue);
 
