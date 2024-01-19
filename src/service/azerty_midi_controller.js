@@ -6,6 +6,13 @@ import { SceneService } from '#src/service/scene';
 import { AzertyMidiControllerError } from '#src/model/error';
 import { log } from 'custom-console-log';
 
+const sanitizeSequence = (sequence) => {
+  if (sequence === ' ') return 'space';
+  if (sequence === '\u001b[C') return 'right';
+  if (sequence === '\u001b[D') return 'left';
+  return sequence;
+};
+
 export default class AzertyMidiControllerService {
   #config;
 
@@ -30,7 +37,7 @@ export default class AzertyMidiControllerService {
 
     if (this.#config.sceneNavigation) {
       this.#sceneNavigationService = new SceneNavigationService(
-        this.#config.sceneNavigation,
+        this.#config.sceneNavigation, // TODO : remove
         this.#config.scenes[0],
         this.#config.scenes,
       );
@@ -44,13 +51,14 @@ export default class AzertyMidiControllerService {
 
     if (this.#config.scenes) {
       this.#sceneService = new SceneService(
-        this.#config.scenes[0],
+        this.#config.scenes[0], // TODO : remove
         this.#config.scenes,
       );
       this.#listenSceneService();
     }
-
     this.#listenKeyboard({ forceLocal });
+
+    if (this.#config.sceneNavigation || this.#config.scenes) this.#setScene(this.#config.scenes[0]);
   }
 
   #handleKeyboard(message) {
@@ -117,14 +125,21 @@ export default class AzertyMidiControllerService {
     if (scene.label) log.magenta('scene', scene.label);
     else log.magenta('scene', scene.id);
     scene.mappings.forEach((mapping) => {
-      if (mapping.label) log.blue(mapping.label, mapping.sequence);
+      if (mapping.label) log.blue(mapping.label, sanitizeSequence(mapping.sequence));
     });
     if (this.#globalService) {
+      log.info('');
       this.#config.global.mappings.forEach((mapping) => {
-        if (mapping.label) log.blue(mapping.label, mapping.sequence);
+        if (mapping.label) log.blue(mapping.label, sanitizeSequence(mapping.sequence));
       });
     }
+    if (this.#sceneNavigationService) {
+      log.info('');
+      log.blue('scene previous', sanitizeSequence(this.#config.sceneNavigation.previous));
+      log.blue('scene next', sanitizeSequence(this.#config.sceneNavigation.next));
+    }
     this.#sceneService.set(scene);
+    log.info('');
     if (this.#sceneNavigationService) this.#sceneNavigationService.set(scene);
   }
 
