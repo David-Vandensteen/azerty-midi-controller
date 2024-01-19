@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { TypeModel } from '#src/model/type';
+import { MidiTypeModel } from '#src/model/midi/type';
 import { MappingError } from '#src/model/error';
 
 export default class MappingModel {
@@ -9,7 +9,7 @@ export default class MappingModel {
     assert(typeof channel === 'number', new MappingError('invalid mapping channel'));
 
     this.sequence = sequence;
-    this.type = new TypeModel(type);
+    this.type = new MidiTypeModel(type);
     this.controller = controller;
     this.channel = channel;
 
