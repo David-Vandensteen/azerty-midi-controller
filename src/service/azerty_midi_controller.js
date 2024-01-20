@@ -107,6 +107,11 @@ export default class AzertyMidiControllerService {
     if (this.#sceneManager) {
       this.#sceneManager.set(scene);
       log.info('');
+      this.#config.sceneNavigation.scenes.forEach((navigationScene) => {
+        if (navigationScene.label) log.blue('scene', navigationScene.label, sanitizeSequence(navigationScene.sequence));
+        else log.blue('scene', navigationScene.id, sanitizeSequence(navigationScene.sequence));
+      });
+      log.info('');
       log.blue('scene previous', sanitizeSequence(this.#config.sceneNavigation.previous));
       log.blue('scene next', sanitizeSequence(this.#config.sceneNavigation.next));
     }

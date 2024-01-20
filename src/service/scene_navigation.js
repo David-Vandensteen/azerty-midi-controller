@@ -38,6 +38,17 @@ export default class SceneNavigationService extends EventEmitter {
     if (sequence === undefined) throw new SceneNavigationError('sequence is undefined');
     if (sequence === this.#sceneNavigation.next) this.#next();
     if (sequence === this.#sceneNavigation.previous) this.#previous();
+
+    const sceneNavigationFromSequence = this.#sceneNavigation.scenes.find(
+      (scene) => scene.sequence === sequence,
+    );
+
+    if (sceneNavigationFromSequence) {
+      const sceneFomSceneNavigation = this.#scenes.find(
+        (scene) => scene.id === sceneNavigationFromSequence.id,
+      );
+      if (sceneFomSceneNavigation) this.emit('scene-navigation', sceneFomSceneNavigation);
+    }
   }
 
   set(scene) {
