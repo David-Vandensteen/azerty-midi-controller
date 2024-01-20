@@ -11,6 +11,7 @@ export default class SceneModel {
 
     this.mappings = mappings.map(
       (mapping) => new MappingModel(
+        mapping.sequence,
         mapping.type,
         mapping.controller,
         mapping.channel,
