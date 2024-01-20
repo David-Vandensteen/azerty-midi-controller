@@ -4,7 +4,7 @@ import { MidiError } from '#src/model/error';
 export default class MidiModel {
   midiOut;
 
-  constructor(midiOut, midiIn) {
+  constructor(midiOut, { midiIn } = {}) {
     assert(typeof midiOut === 'string', new MidiError('invalid midiOut'));
 
     if (midiIn) {
@@ -19,7 +19,7 @@ export default class MidiModel {
     try {
       return new MidiModel(
         json.out,
-        json.in,
+        { midiIn: json.in },
       );
     } catch (err) {
       throw new MidiError(err);
