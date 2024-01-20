@@ -18,6 +18,25 @@ export default class SceneNavigationService extends EventEmitter {
     this.#scenes = scenes;
   }
 
+  #getSceneById(id) {
+    return this.#scenes.find((scene) => scene.id === id);
+  }
+
+  #getSceneBySequence(sequence) {
+    const sceneNavigationFromSequence = this.#getNavigationSceneBySequence(sequence);
+
+    if (sceneNavigationFromSequence && this.#getSceneById(sceneNavigationFromSequence.id)) {
+      return this.#getSceneById(sceneNavigationFromSequence.id);
+    }
+    return undefined;
+  }
+
+  #getNavigationSceneBySequence(sequence) {
+    return this.#sceneNavigation.scenes.find(
+      (navigationScene) => navigationScene.sequence === sequence,
+    );
+  }
+
   #next() {
     let index = this.#scenes.findIndex((scene) => scene.id === this.#scene.id) + 1;
     if (index >= this.#scenes.length) index = 0;
@@ -39,15 +58,8 @@ export default class SceneNavigationService extends EventEmitter {
     if (sequence === this.#sceneNavigation.next) this.#next();
     if (sequence === this.#sceneNavigation.previous) this.#previous();
 
-    const sceneNavigationFromSequence = this.#sceneNavigation.scenes.find(
-      (scene) => scene.sequence === sequence,
-    );
-
-    if (sceneNavigationFromSequence) {
-      const sceneFomSceneNavigation = this.#scenes.find(
-        (scene) => scene.id === sceneNavigationFromSequence.id,
-      );
-      if (sceneFomSceneNavigation) this.emit('scene-navigation', sceneFomSceneNavigation);
+    if (this.#getSceneBySequence(sequence)) {
+      this.emit('scene-navigation', this.#getSceneBySequence(sequence));
     }
   }
 
