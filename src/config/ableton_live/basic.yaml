@@ -1,10 +1,21 @@
-midiIn: 'IAC AMC-IN'
-midiOut: 'IAC AMC-OUT'
 port: 8080
+
+midi:
+  in: 'IAC AMC-IN'
+  out: 'IAC AMC-OUT'
 
 sceneNavigation:
   next: d
   previous: q
+  scenes:
+    - id: track 1
+      sequence: '&'
+
+    - id: encoder 1
+      sequence: é
+
+    - id: encoder 9
+      sequence: '"'
 
 global:
   mappings:
@@ -34,7 +45,6 @@ global:
 
 scenes:
   - id: track 1
-    sequence: '&'
     mappings:
       - sequence: z
         label: volume +
@@ -163,7 +173,6 @@ scenes:
         channel: 0
 
   - id: encoder 1
-    sequence: é
     mappings:
       - sequence: z
         label: encoder +
@@ -292,7 +301,6 @@ scenes:
         channel: 0
 
   - id: encoder 9
-    sequence: '"'
     mappings:
       - sequence: z
         label: encoder +
@@ -419,4 +427,3 @@ scenes:
         increment: -1
         controller: 16
         channel: 0
-

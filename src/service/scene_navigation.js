@@ -8,14 +8,13 @@ export default class SceneNavigationService extends EventEmitter {
 
   #scene;
 
-  constructor(sceneNavigation, scene, scenes) {
+  constructor(sceneNavigation, scenes) {
     super();
     if (sceneNavigation === undefined) throw new SceneNavigationError('sceneNavigation is undefined');
-    if (scene === undefined) throw new SceneNavigationError('scene is undefined');
     if (scenes === undefined) throw new SceneNavigationError('scenes is undefined');
 
     this.#sceneNavigation = sceneNavigation;
-    this.#scene = scene;
+    [this.#scene] = scenes;
     this.#scenes = scenes;
   }
 
@@ -39,6 +38,17 @@ export default class SceneNavigationService extends EventEmitter {
     if (sequence === undefined) throw new SceneNavigationError('sequence is undefined');
     if (sequence === this.#sceneNavigation.next) this.#next();
     if (sequence === this.#sceneNavigation.previous) this.#previous();
+
+    const sceneNavigationFromSequence = this.#sceneNavigation.scenes.find(
+      (scene) => scene.sequence === sequence,
+    );
+
+    if (sceneNavigationFromSequence) {
+      const sceneFomSceneNavigation = this.#scenes.find(
+        (scene) => scene.id === sceneNavigationFromSequence.id,
+      );
+      if (sceneFomSceneNavigation) this.emit('scene-navigation', sceneFomSceneNavigation);
+    }
   }
 
   set(scene) {

@@ -1,6 +1,6 @@
 import easymidi from 'easymidi';
 import { MidiControllerStore } from 'midi-controller-store';
-import { TypeModel } from '#src/model/type';
+import { MidiTypeModel } from '#src/model/midi/type';
 import { log } from 'custom-console-log';
 import { MidiError } from '#src/model/error';
 
@@ -11,17 +11,17 @@ export default class MidiService {
 
   #midiStore;
 
-  constructor(midiOutDeviceName, { midiInDeviceName } = {}) {
-    if (midiOutDeviceName === undefined) throw new MidiError('invalid midiOutDeviceName');
+  constructor(midi) {
+    if (midi.out === undefined) throw new MidiError('invalid midiOutDeviceName');
 
     log.magenta('available midi outputs', easymidi.getOutputs());
     log.magenta('available midi inputs', easymidi.getInputs());
 
-    this.#midiOutInstance = new easymidi.Output(midiOutDeviceName);
+    this.#midiOutInstance = new easymidi.Output(midi.out);
     log.green('midi out connected', this.#midiOutInstance.name);
 
-    if (midiInDeviceName) {
-      this.#midiInInstance = new easymidi.Input(midiInDeviceName);
+    if (midi.in) {
+      this.#midiInInstance = new easymidi.Input(midi.in);
       log.green('midi in connected', this.#midiInInstance.name);
     }
 
@@ -44,32 +44,38 @@ export default class MidiService {
     this.#midiOutInstance.close();
   }
 
-  send(controller, channel, type, { increment }) {
-    if (controller === undefined) throw new MidiError('invalid controller');
-    if (channel === undefined) throw new MidiError('invalid channel');
-    if (type === undefined) throw new MidiError('invalid type');
+  send(midiServiceMessage) {
+    if (midiServiceMessage.controller === undefined) throw new MidiError('invalid controller');
+    if (midiServiceMessage.channel === undefined) throw new MidiError('invalid channel');
+    if (midiServiceMessage.type === undefined) throw new MidiError('invalid type');
 
-    const currentValue = this.#midiStore.getValue(controller, channel) || 0;
+    const currentValue = this.#midiStore.getValue(
+      midiServiceMessage.controller,
+      midiServiceMessage.channel,
+    ) || 0;
+
     let computeValue;
 
-    if (type === TypeModel.analog) {
-      computeValue = currentValue + increment;
+    if (midiServiceMessage.type === MidiTypeModel.analog) {
+      computeValue = currentValue + midiServiceMessage.increment;
       if (computeValue > 127) computeValue = 127;
       if (computeValue < 0) computeValue = 0;
     }
 
-    if (type === TypeModel.digital) computeValue = (currentValue <= 1) ? 127 : 1;
+    if (midiServiceMessage.type === MidiTypeModel.digital) {
+      computeValue = (currentValue <= 1) ? 127 : 1;
+    }
 
-    this.#midiStore.set(controller, channel, computeValue);
+    this.#midiStore.set(midiServiceMessage.controller, midiServiceMessage.channel, computeValue);
 
     this.#midiOutInstance.send('cc', {
-      controller,
-      channel,
+      controller: midiServiceMessage.controller,
+      channel: midiServiceMessage.channel,
       value: computeValue,
     });
 
-    log.dev('send cc midi', controller, channel, computeValue);
-    log.dev(this.#midiStore.getValue(controller, channel));
+    log.dev('send cc midi', midiServiceMessage.controller, midiServiceMessage.channel, computeValue);
+    log.dev(this.#midiStore.getValue(midiServiceMessage.controller, midiServiceMessage.channel));
 
     return this;
   }

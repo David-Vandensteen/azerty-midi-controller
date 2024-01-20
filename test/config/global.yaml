@@ -1,4 +1,5 @@
-midiOut: 'IAC AMC-OUT'
+midi:
+  out: 'IAC AMC-OUT'
 
 global:
   mappings:

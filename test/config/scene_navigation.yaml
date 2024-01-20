@@ -1,13 +1,23 @@
-midiOut: 'IAC AMC-OUT'
+midi:
+  out: 'IAC AMC-OUT'
 
 sceneNavigation:
   next: d
   previous: q
+  scenes:
+    - id: track 1
+      sequence: w
+
+    - id: track 2
+      sequence: x
+
+    - id: track 2
+      sequence: c
 
 scenes:
   - id: track 1
     mappings:
-      - sequence: a
+      - sequence: z
         controller: 17
         channel: 0
         type: 'digital'
@@ -21,7 +31,7 @@ scenes:
 
   - id: track 3
     mappings:
-      - sequence: e
+      - sequence: z
         controller: 19
         channel: 0
         type: 'digital'

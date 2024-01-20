@@ -24,13 +24,12 @@ export default class ConfigLoaderService {
   #parse() {
     try {
       (() => new ConfigModel(
-        this.#config.midiOut,
-        this.#config.scenes,
+        this.#config.midi,
         {
-          midiIn: this.#config.midiIn,
           port: this.#config.port,
           sceneNavigation: this.#config.sceneNavigation,
           global: this.#config.global,
+          scenes: this.#config.scenes,
         },
       ))();
     } catch (err) {

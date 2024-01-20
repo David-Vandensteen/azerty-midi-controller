@@ -7,12 +7,11 @@ export default class SceneService extends EventEmitter {
 
   #mappingService;
 
-  constructor({ mappings }, scenes) {
+  constructor(scenes) {
     super();
-    if (mappings === undefined) throw new SceneError('mappings is undefined');
     if (scenes === undefined) throw new SceneError('scenes is undefined');
     this.#scenes = scenes;
-    this.#mappingService = new MappingService(mappings);
+    this.#mappingService = new MappingService(scenes[0].mappings);
     this.#listenMappingService();
   }
 

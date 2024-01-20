@@ -1,34 +1,29 @@
 import assert from 'node:assert';
 import { SceneNavigationModel } from '#src/model/scene_navigation';
+import { MidiModel } from '#src/model/midi';
 import { GlobalModel } from '#src/model/global';
 import { SceneModel } from '#src/model/scene';
 import { ConfigError } from '#src/model/error';
 
 export default class ConfigModel {
-  constructor(midiOut, {
-    midiIn,
+  midi;
+
+  constructor(midi, {
     port,
     sceneNavigation,
     scenes,
     global,
   } = {}) {
-    assert(typeof midiOut === 'string', new ConfigError('invalid midiOut'));
-
-    this.midiOut = midiOut;
+    this.midi = MidiModel.deserialize(midi);
 
     if (scenes) {
       this.scenes = scenes.map(
         (scene) => new SceneModel(
           scene.id,
           scene.mappings,
-          { sequence: scene.sequence, label: scene.label },
+          { label: scene.label },
         ),
       );
-    }
-
-    if (midiIn) {
-      assert(typeof midiIn === 'string', new ConfigError('invalid midiIn'));
-      this.midiIn = midiIn;
     }
 
     if (port) {
