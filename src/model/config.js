@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { SceneNavigationModel } from '#src/model/scene_navigation';
+import { NavigationModel } from '#src/model/navigation';
 import { MidiModel } from '#src/model/midi';
 import { GlobalModel } from '#src/model/global';
 import { SceneModel } from '#src/model/scene';
@@ -10,7 +10,7 @@ export default class ConfigModel {
 
   constructor(midi, {
     port,
-    sceneNavigation,
+    navigation,
     scenes,
     global,
   } = {}) {
@@ -31,10 +31,10 @@ export default class ConfigModel {
       this.port = port;
     }
 
-    if (sceneNavigation) {
-      this.sceneNavigation = new SceneNavigationModel(
-        sceneNavigation.next,
-        sceneNavigation.previous,
+    if (navigation) {
+      this.navigation = new NavigationModel(
+        navigation.next,
+        navigation.previous,
       );
     }
 

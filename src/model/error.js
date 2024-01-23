@@ -1,7 +1,7 @@
 import { AzertyMidiControllerError } from '#src/model/error/azerty_midi_controller';
 import { ObjectError } from '#src/model/error/object';
 import { GlobalError } from '#src/model/error/global';
-import { SceneNavigationError } from '#src/model/error/scene_navigation';
+import { NavigationError } from '#src/model/error/navigation';
 import { SceneError } from '#src/model/error/scene';
 import { MappingError } from '#src/model/error/mapping';
 import { MidiError } from '#src/model/error/midi';
@@ -13,7 +13,7 @@ export {
   AzertyMidiControllerError,
   ObjectError,
   GlobalError,
-  SceneNavigationError,
+  NavigationError,
   SceneError,
   MappingError,
   MidiError,

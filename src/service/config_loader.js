@@ -5,7 +5,7 @@ import { log } from 'custom-console-log';
 import {
   ConfigError,
   GlobalError,
-  SceneNavigationError,
+  NavigationError,
   SceneError,
   MappingError,
   TypeError,
@@ -35,7 +35,7 @@ export default class ConfigLoaderService {
     } catch (err) {
       if (err instanceof SceneError) throw new SceneError(err);
       else if (err instanceof GlobalError) throw new GlobalError(err);
-      else if (err instanceof SceneNavigationError) throw new SceneNavigationError(err);
+      else if (err instanceof NavigationError) throw new NavigationError(err);
       else if (err instanceof MappingError) throw new MappingError(err);
       else if (err instanceof TypeError) throw new TypeError(err);
 

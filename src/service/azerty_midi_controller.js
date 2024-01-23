@@ -30,9 +30,9 @@ export default class AzertyMidiControllerService {
 
     this.#midiService = new MidiService(this.#config.midi);
 
-    if (this.#config.sceneNavigation && this.#config.scenes) {
+    if (this.#config.navigation && this.#config.scenes) {
       this.#sceneManager = new SceneManager(
-        this.#config.sceneNavigation,
+        this.#config.navigation,
         this.#config.scenes,
       );
       this.#listenSceneManager();
@@ -44,7 +44,7 @@ export default class AzertyMidiControllerService {
     }
 
     this.#listenKeyboard({ forceLocal });
-    if (this.#config.sceneNavigation || this.#config.scenes) this.#setScene(this.#config.scenes[0]);
+    if (this.#config.navigation || this.#config.scenes) this.#setScene(this.#config.scenes[0]);
   }
 
   #handleKeyboard(message) {
@@ -107,13 +107,13 @@ export default class AzertyMidiControllerService {
     if (this.#sceneManager) {
       this.#sceneManager.set(scene);
       log.info('');
-      this.#config.sceneNavigation.scenes.forEach((navigationScene) => {
+      this.#config.navigation.scenes.forEach((navigationScene) => {
         if (navigationScene.label) log.blue('scene', navigationScene.label, sanitizeSequence(navigationScene.sequence));
         else log.blue('scene', navigationScene.id, sanitizeSequence(navigationScene.sequence));
       });
       log.info('');
-      log.blue('scene previous', sanitizeSequence(this.#config.sceneNavigation.previous));
-      log.blue('scene next', sanitizeSequence(this.#config.sceneNavigation.next));
+      log.blue('scene previous', sanitizeSequence(this.#config.navigation.previous));
+      log.blue('scene next', sanitizeSequence(this.#config.navigation.next));
     }
   }
 

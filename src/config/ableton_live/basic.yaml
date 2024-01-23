@@ -4,7 +4,7 @@ midi:
   in: 'IAC AMC-IN'
   out: 'IAC AMC-OUT'
 
-sceneNavigation:
+navigation:
   next: d
   previous: q
   scenes:
@@ -262,7 +262,7 @@ scenes:
         channel: 0
 
       - sequence: s
-        label: volume
+        label: encoder -
         type: analog
         increment: -1
         controller: 6

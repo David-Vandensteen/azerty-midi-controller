@@ -1,19 +1,19 @@
 import EventEmitter from 'events';
-import { SceneNavigationError } from '#src/model/error';
+import { NavigationError } from '#src/model/error';
 
-export default class SceneNavigationService extends EventEmitter {
-  #sceneNavigation;
+export default class NavigationService extends EventEmitter {
+  #navigation;
 
   #scenes;
 
   #scene;
 
-  constructor(sceneNavigation, scenes) {
+  constructor(navigation, scenes) {
     super();
-    if (sceneNavigation === undefined) throw new SceneNavigationError('sceneNavigation is undefined');
-    if (scenes === undefined) throw new SceneNavigationError('scenes is undefined');
+    if (navigation === undefined) throw new NavigationError('navigation is undefined');
+    if (scenes === undefined) throw new NavigationError('scenes is undefined');
 
-    this.#sceneNavigation = sceneNavigation;
+    this.#navigation = navigation;
     [this.#scene] = scenes;
     this.#scenes = scenes;
   }
@@ -32,7 +32,7 @@ export default class SceneNavigationService extends EventEmitter {
   }
 
   #getNavigationSceneBySequence(sequence) {
-    return this.#sceneNavigation.scenes.find(
+    return this.#navigation.scenes.find(
       (navigationScene) => navigationScene.sequence === sequence,
     );
   }
@@ -41,7 +41,7 @@ export default class SceneNavigationService extends EventEmitter {
     let index = this.#scenes.findIndex((scene) => scene.id === this.#scene.id) + 1;
     if (index >= this.#scenes.length) index = 0;
     this.#scene = this.#scenes[index];
-    this.emit('scene-navigation', this.#scene);
+    this.emit('navigation', this.#scene);
 
     return this;
   }
@@ -50,23 +50,23 @@ export default class SceneNavigationService extends EventEmitter {
     let index = this.#scenes.findIndex((scene) => scene.id === this.#scene.id) - 1;
     if (index < 0) index = this.#scenes.length - 1;
     this.#scene = this.#scenes[index];
-    this.emit('scene-navigation', this.#scene);
+    this.emit('navigation', this.#scene);
   }
 
   handle(sequence) {
-    if (sequence === undefined) throw new SceneNavigationError('sequence is undefined');
-    if (sequence === this.#sceneNavigation.next) this.#next();
-    if (sequence === this.#sceneNavigation.previous) this.#previous();
+    if (sequence === undefined) throw new NavigationError('sequence is undefined');
+    if (sequence === this.#navigation.next) this.#next();
+    if (sequence === this.#navigation.previous) this.#previous();
 
     if (this.#getSceneBySequence(sequence)) {
-      this.emit('scene-navigation', this.#getSceneBySequence(sequence));
+      this.emit('navigation', this.#getSceneBySequence(sequence));
     }
   }
 
   set(scene) {
-    if (scene === undefined) throw new SceneNavigationError('scene is undefined');
+    if (scene === undefined) throw new NavigationError('scene is undefined');
     this.#scene = scene;
   }
 }
 
-export { SceneNavigationService };
+export { NavigationService };
