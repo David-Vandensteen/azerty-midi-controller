@@ -1,8 +1,9 @@
+name: ableton live basic
 port: 8080
 
 midi:
-  in: 'IAC AMC-IN'
-  out: 'IAC AMC-OUT'
+  in: IAC AMC-IN
+  out: IAC AMC-OUT
 
 navigation:
   next: d

@@ -1,5 +1,6 @@
+name: test global
 midi:
-  out: 'IAC AMC-OUT'
+  out: IAC AMC-OUT
 
 global:
   mappings:
