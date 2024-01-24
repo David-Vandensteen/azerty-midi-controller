@@ -17,6 +17,18 @@ export default class NavigationModel {
 
     if (scenes) this.scenes = scenes;
   }
+
+  static deserialize(json) {
+    try {
+      return new NavigationModel(
+        json?.next,
+        json?.previous,
+        { scenes: json?.scenes },
+      );
+    } catch (err) {
+      throw new NavigationError(err);
+    }
+  }
 }
 
 export { NavigationModel };
