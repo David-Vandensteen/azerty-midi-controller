@@ -33,13 +33,8 @@ export default class ConfigModel {
       this.port = port;
     }
 
-    if (navigation) {
-      this.navigation = NavigationModel.deserialize(navigation);
-    }
-
-    if (global) {
-      this.global = new GlobalModel({ mappings: global.mappings });
-    }
+    if (navigation) this.navigation = NavigationModel.deserialize(navigation);
+    if (global) this.global = GlobalModel.deserialize(global.mappings);
   }
 
   static deserialize(json) {

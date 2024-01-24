@@ -1,4 +1,5 @@
 import { MappingModel } from '#src/model/mapping';
+import { GlobalError } from '#src/model/error';
 
 export default class GlobalModel {
   constructor({ mappings } = {}) {
@@ -17,6 +18,16 @@ export default class GlobalModel {
       );
 
       this.mappings = mappings;
+    }
+  }
+
+  static deserialize(json) {
+    try {
+      return new GlobalModel(
+        { mappings: json?.mappings },
+      );
+    } catch (err) {
+      throw new GlobalError(err);
     }
   }
 }
