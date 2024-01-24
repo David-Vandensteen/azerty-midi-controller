@@ -27,6 +27,18 @@ export default class SceneModel {
       this.label = label;
     }
   }
+
+  static deserialize(json) {
+    try {
+      return new SceneModel(
+        json?.id,
+        json?.mappings,
+        { label: json?.label },
+      );
+    } catch (err) {
+      throw new SceneError(err);
+    }
+  }
 }
 
 export { SceneModel };
