@@ -8,12 +8,14 @@ import { ConfigError } from '#src/model/error';
 export default class ConfigModel {
   midi;
 
-  constructor(midi, {
+  constructor(name, midi, {
     port,
     navigation,
     scenes,
     global,
   } = {}) {
+    assert(typeof name === 'string', new ConfigError('invalid name'));
+
     this.midi = MidiModel.deserialize(midi);
 
     if (scenes) {
