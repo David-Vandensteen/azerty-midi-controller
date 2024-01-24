@@ -18,8 +18,8 @@ export default class MidiModel {
   static deserialize(json) {
     try {
       return new MidiModel(
-        json.out,
-        { midiIn: json.in },
+        json?.out,
+        { midiIn: json?.in },
       );
     } catch (err) {
       throw new MidiError(err);
