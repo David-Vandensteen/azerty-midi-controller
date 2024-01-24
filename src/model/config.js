@@ -34,10 +34,7 @@ export default class ConfigModel {
     }
 
     if (navigation) {
-      this.navigation = new NavigationModel(
-        navigation.next,
-        navigation.previous,
-      );
+      this.navigation = NavigationModel.deserialize(navigation);
     }
 
     if (global) {
