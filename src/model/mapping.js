@@ -3,6 +3,14 @@ import { MidiTypeModel } from '#src/model/midi/type';
 import { MappingError } from '#src/model/error';
 
 export default class MappingModel {
+  sequence;
+
+  type;
+
+  controller;
+
+  channel;
+
   constructor(sequence, type, controller, channel, { increment, label } = {}) {
     assert(typeof sequence === 'string', new MappingError('invalid sequence'));
     assert(typeof controller === 'number', new MappingError('invalid mapping controller'));
@@ -15,6 +23,20 @@ export default class MappingModel {
 
     if (increment) this.increment = increment;
     if (label) this.label = label;
+  }
+
+  static deserialize(json) {
+    try {
+      return new MappingModel(
+        json?.sequence,
+        json?.type,
+        json?.controller,
+        json?.channel,
+        { increment: json?.increment, label: json?.label },
+      );
+    } catch (err) {
+      throw new MappingError(err);
+    }
   }
 }
 
