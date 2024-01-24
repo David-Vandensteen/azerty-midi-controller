@@ -1,4 +1,5 @@
 import assert from 'node:assert';
+import { NavigationSceneModel } from '#src/model/navigation/scene';
 import { NavigationError } from '#src/model/error';
 
 export default class NavigationModel {
@@ -15,7 +16,7 @@ export default class NavigationModel {
     this.next = next;
     this.previous = previous;
 
-    if (scenes) this.scenes = scenes;
+    if (scenes) this.scenes = scenes.map((scene) => NavigationSceneModel.deserialize(scene));
   }
 
   static deserialize(json) {
