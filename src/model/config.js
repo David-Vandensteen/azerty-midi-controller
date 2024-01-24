@@ -44,6 +44,23 @@ export default class ConfigModel {
       this.global = new GlobalModel({ mappings: global.mappings });
     }
   }
+
+  static deserialize(json) {
+    try {
+      return new ConfigModel(
+        json?.name,
+        json?.midi,
+        {
+          port: json?.port,
+          navigation: json?.navigation,
+          scenes: json?.scenes,
+          global: json?.global,
+        },
+      );
+    } catch (err) {
+      throw new ConfigError(err);
+    }
+  }
 }
 
 export { ConfigModel };
