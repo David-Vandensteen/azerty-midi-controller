@@ -5,7 +5,6 @@ import { NavigationSceneModel } from '#src/model/navigation/scene';
 import { SceneModel } from '#src/model/scene';
 import { MappingModel } from '#src/model/mapping';
 import { log } from 'custom-console-log';
-
 import { ConfigError } from '#src/model/error';
 
 export default class ConfigLoaderService {
@@ -24,7 +23,8 @@ export default class ConfigLoaderService {
   }
 
   #parse() {
-    MidiModel.deserialize(this.#config.midi);
+    // MidiModel.deserialize(this.#config.midi);
+    (() => new MidiModel(this.#config?.midi?.out, { midiIn: this.#config?.midi?.in }))();
 
     if (this.#config?.navigation?.scenes) {
       this.#config.navigation.scenes.forEach((scene) => {

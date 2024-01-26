@@ -16,6 +16,7 @@ export default class MidiModel {
   }
 
   static deserialize(json) {
+    console.log('midi:', json);
     try {
       return new MidiModel(
         json?.out,

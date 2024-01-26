@@ -16,16 +16,15 @@ export default class ConfigModel {
   } = {}) {
     assert(typeof name === 'string', new ConfigError('invalid name'));
 
-    this.midi = MidiModel.deserialize(midi);
-
     if (scenes) {
-      this.scenes = scenes.map(
-        (scene) => new SceneModel(
-          scene.id,
-          scene.mappings,
-          { label: scene.label },
-        ),
-      );
+      // this.scenes = scenes.map(
+      //   (scene) => new SceneModel(
+      //     scene.id,
+      //     scene.mappings,
+      //     { label: scene.label },
+      //   ),
+      // );
+      this.scenes = scenes;
     }
 
     if (port) {
@@ -33,23 +32,24 @@ export default class ConfigModel {
       this.port = port;
     }
 
-    if (navigation) this.navigation = NavigationModel.deserialize(navigation);
-    if (global) this.global = GlobalModel.deserialize(global.mappings);
+    if (navigation) this.navigation = navigation;
+    if (global) this.global = global;
   }
 
   static deserialize(json) {
     try {
       return new ConfigModel(
         json?.name,
-        json?.midi,
+        new MidiModel(json?.midi?.in, { midiOut: json?.midi?.out }), // todo factory
         {
           port: json?.port,
-          navigation: json?.navigation,
-          scenes: json?.scenes,
-          global: json?.global,
+          navigation: NavigationModel.deserialize(json?.navigation),
+          scenes: json?.scenes?.map((scene) => SceneModel.deserialize(scene)),
+          global: GlobalModel.deserialize(json?.global?.mappings),
         },
       );
     } catch (err) {
+      console.log(err);
       throw new ConfigError(err);
     }
   }
