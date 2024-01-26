@@ -10,6 +10,8 @@ import { ConfigError } from '#src/model/error';
 export default class ConfigLoaderService {
   #config;
 
+  configInstance;
+
   constructor(configFile) {
     if (configFile === undefined) throw new ConfigError('configFile is undefined');
     log.magenta('try to load', configFile);
@@ -17,14 +19,8 @@ export default class ConfigLoaderService {
     this.#parse();
   }
 
-  #load() { // TODO
-    log('config load');
-    ConfigModel.deserialize(this.#config);
-  }
-
   #parse() {
-    // MidiModel.deserialize(this.#config.midi);
-    (() => new MidiModel(this.#config?.midi?.out, { midiIn: this.#config?.midi?.in }))();
+    MidiModel.deserialize(this.#config.midi);
 
     if (this.#config?.navigation?.scenes) {
       this.#config.navigation.scenes.forEach((scene) => {
@@ -59,7 +55,7 @@ export default class ConfigLoaderService {
     log('');
   }
 
-  get() { return this.#config; }
+  get() { return ConfigModel.deserialize(this.#config); }
 }
 
 export { ConfigLoaderService };

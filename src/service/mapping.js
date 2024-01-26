@@ -1,4 +1,6 @@
+import assert from 'node:assert';
 import EventEmitter from 'events';
+import { MappingModel } from '#src/model/mapping';
 import { MappingError } from '#src/model/error';
 
 export default class MappingService extends EventEmitter {
@@ -6,7 +8,7 @@ export default class MappingService extends EventEmitter {
 
   constructor(mappings) {
     super();
-    if (mappings === undefined) throw new MappingError('mappings is undefined');
+    assert(mappings.every((mapping) => mapping instanceof MappingModel), new MappingError('invalid mappings'));
 
     this.#mappings = mappings;
   }

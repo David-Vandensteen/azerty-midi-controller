@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+import { ConfigModel } from '#src/model/config';
 import { NetKeyboardServer } from 'net-keyboard';
 import { MidiServiceMessage } from '#src/model/midi/service/message';
 import { MidiService } from '#src/service/midi';
@@ -25,7 +27,7 @@ export default class AzertyMidiControllerService {
   constructor(config, { forceLocal }) {
     log.green('start application');
 
-    if (config === undefined) throw new AzertyMidiControllerError('config is undefined');
+    assert(config instanceof ConfigModel, new AzertyMidiControllerError('invalid config'));
     this.#config = config;
 
     this.#midiService = new MidiService(this.#config.midi);

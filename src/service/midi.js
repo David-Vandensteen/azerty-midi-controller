@@ -47,7 +47,7 @@ export default class MidiService {
   send(midiServiceMessage) {
     if (midiServiceMessage.controller === undefined) throw new MidiError('invalid controller');
     if (midiServiceMessage.channel === undefined) throw new MidiError('invalid channel');
-    if (midiServiceMessage.type === undefined) throw new MidiError('invalid type');
+    if (midiServiceMessage.type.toString() === undefined) throw new MidiError('invalid type');
 
     const currentValue = this.#midiStore.getValue(
       midiServiceMessage.controller,
@@ -56,7 +56,7 @@ export default class MidiService {
 
     let computeValue;
 
-    if (midiServiceMessage.type === MidiTypeModel.analog) {
+    if (midiServiceMessage.type.toString() === MidiTypeModel.analog) {
       computeValue = currentValue + midiServiceMessage.increment;
       if (computeValue > 127) computeValue = 127;
       if (computeValue < 0) computeValue = 0;

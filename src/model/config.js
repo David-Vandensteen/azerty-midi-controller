@@ -6,6 +6,8 @@ import { SceneModel } from '#src/model/scene';
 import { ConfigError } from '#src/model/error';
 
 export default class ConfigModel {
+  name;
+
   midi;
 
   constructor(name, midi, {
@@ -15,23 +17,17 @@ export default class ConfigModel {
     global,
   } = {}) {
     assert(typeof name === 'string', new ConfigError('invalid name'));
+    assert(midi instanceof MidiModel, new ConfigError('invalid midi'));
 
-    if (scenes) {
-      // this.scenes = scenes.map(
-      //   (scene) => new SceneModel(
-      //     scene.id,
-      //     scene.mappings,
-      //     { label: scene.label },
-      //   ),
-      // );
-      this.scenes = scenes;
-    }
+    this.name = name;
+    this.midi = midi;
 
     if (port) {
       assert(typeof port === 'number', new ConfigError('invalid port'));
       this.port = port;
     }
 
+    if (scenes) this.scenes = scenes;
     if (navigation) this.navigation = navigation;
     if (global) this.global = global;
   }
@@ -40,16 +36,15 @@ export default class ConfigModel {
     try {
       return new ConfigModel(
         json?.name,
-        new MidiModel(json?.midi?.in, { midiOut: json?.midi?.out }), // todo factory
+        MidiModel.deserialize(json?.midi),
         {
           port: json?.port,
           navigation: NavigationModel.deserialize(json?.navigation),
           scenes: json?.scenes?.map((scene) => SceneModel.deserialize(scene)),
-          global: GlobalModel.deserialize(json?.global?.mappings),
+          global: GlobalModel.deserialize(json?.global),
         },
       );
     } catch (err) {
-      console.log(err);
       throw new ConfigError(err);
     }
   }

@@ -29,7 +29,6 @@ export default class NavigationModel {
       return new NavigationModel(
         json?.next,
         json?.previous,
-        // { scenes: json?.scenes },
         { scenes: json?.scenes?.map((scene) => NavigationSceneModel.deserialize(scene)) },
       );
     } catch (err) {
