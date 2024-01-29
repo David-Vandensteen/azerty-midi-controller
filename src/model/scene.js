@@ -9,7 +9,6 @@ export default class SceneModel {
 
   constructor(id, mappings, { label } = {}) {
     assert(typeof id === 'string' || typeof id === 'number', new SceneError('invalid id'));
-    assert(Array.isArray(mappings), new SceneError('invalid mappings'));
     assert(mappings.every((mapping) => mapping instanceof MappingModel), new SceneError('invalid mappings'));
 
     this.id = id;

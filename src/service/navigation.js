@@ -1,4 +1,7 @@
+import assert from 'node:assert';
 import EventEmitter from 'events';
+import { NavigationModel } from '#src/model/navigation';
+import { SceneModel } from '#src/model/scene';
 import { NavigationError } from '#src/model/error';
 
 export default class NavigationService extends EventEmitter {
@@ -10,8 +13,8 @@ export default class NavigationService extends EventEmitter {
 
   constructor(navigation, scenes) {
     super();
-    if (navigation === undefined) throw new NavigationError('navigation is undefined');
-    if (scenes === undefined) throw new NavigationError('scenes is undefined');
+    assert(navigation instanceof NavigationModel, new NavigationError('invalid navigation'));
+    assert(scenes.every((scene) => scene instanceof SceneModel), new NavigationError('invalid scenes'));
 
     this.#navigation = navigation;
     [this.#scene] = scenes;
@@ -19,10 +22,12 @@ export default class NavigationService extends EventEmitter {
   }
 
   #getSceneById(id) {
+    if (id === undefined) throw new NavigationError('invalid scene id');
     return this.#scenes.find((scene) => scene.id === id);
   }
 
   #getSceneBySequence(sequence) {
+    if (sequence === undefined) throw new NavigationError('invalid scene sequence');
     const sceneNavigationFromSequence = this.#getNavigationSceneBySequence(sequence);
 
     if (sceneNavigationFromSequence && this.#getSceneById(sceneNavigationFromSequence.id)) {
@@ -32,6 +37,7 @@ export default class NavigationService extends EventEmitter {
   }
 
   #getNavigationSceneBySequence(sequence) {
+    if (sequence === undefined) throw new NavigationError('invalid scene sequence');
     return this.#navigation.scenes.find(
       (navigationScene) => navigationScene.sequence === sequence,
     );
@@ -64,7 +70,7 @@ export default class NavigationService extends EventEmitter {
   }
 
   set(scene) {
-    if (scene === undefined) throw new NavigationError('scene is undefined');
+    assert(scene instanceof SceneModel, new NavigationError('invalid scene'));
     this.#scene = scene;
   }
 }

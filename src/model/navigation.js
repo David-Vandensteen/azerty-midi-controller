@@ -12,10 +12,7 @@ export default class NavigationModel {
     assert(typeof previous === 'string', new NavigationError('invalid scene navigation previous'));
 
     if (scenes) {
-      assert(
-        Array.isArray(scenes)
-        && scenes.every((scene) => scene instanceof NavigationSceneModel),
-      );
+      assert(scenes.every((scene) => scene instanceof NavigationSceneModel));
     }
 
     if (scenes) this.scenes = scenes.map((scene) => NavigationSceneModel.deserialize(scene));

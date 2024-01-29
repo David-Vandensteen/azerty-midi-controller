@@ -27,9 +27,20 @@ export default class ConfigModel {
       this.port = port;
     }
 
-    if (scenes) this.scenes = scenes;
-    if (navigation) this.navigation = navigation;
-    if (global) this.global = global;
+    if (scenes) {
+      assert(scenes.every((scene) => scene instanceof SceneModel), new ConfigError('invalid scenes'));
+      this.scenes = scenes;
+    }
+
+    if (navigation) {
+      assert(navigation instanceof NavigationModel, new ConfigError('invalid navigation'));
+      this.navigation = navigation;
+    }
+
+    if (global) {
+      assert(global instanceof GlobalModel, new ConfigError('invalid global'));
+      this.global = global;
+    }
   }
 
   static deserialize(json) {

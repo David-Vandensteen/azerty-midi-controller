@@ -49,7 +49,7 @@ export default class SceneService extends EventEmitter {
   }
 
   set({ mappings }) {
-    if (mappings === undefined) throw new SceneError('mappings is undefined');
+    assert(mappings.every((mapping) => mapping instanceof MappingModel), new SceneError('invalid mappings'));
     this.#mappingService.set(mappings);
   }
 }

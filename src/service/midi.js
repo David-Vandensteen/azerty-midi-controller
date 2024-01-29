@@ -50,9 +50,6 @@ export default class MidiService {
 
   send(midiServiceMessage) {
     assert(midiServiceMessage instanceof MidiServiceMessageModel, new MidiError('invalid midi service message'));
-    // if (midiServiceMessage.controller === undefined) throw new MidiError('invalid controller');
-    // if (midiServiceMessage.channel === undefined) throw new MidiError('invalid channel');
-    // if (midiServiceMessage.type.toString() === undefined) throw new MidiError('invalid type');
 
     const currentValue = this.#midiStore.getValue(
       midiServiceMessage.controller,
