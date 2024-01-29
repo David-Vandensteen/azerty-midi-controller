@@ -7,6 +7,7 @@ import { MappingModel } from '#src/model/mapping';
 import { NetKeyboardServer } from 'net-keyboard';
 import { MidiServiceMessage } from '#src/model/midi/service/message';
 import { MidiService } from '#src/service/midi';
+import EventEmitter from 'node:events';
 import { SceneManager } from '#src/manager/scene';
 import { GlobalService } from '#src/service/global';
 import { AzertyMidiControllerError } from '#src/model/error';
@@ -14,12 +15,14 @@ import { log } from 'custom-console-log';
 
 const sanitizeSequence = (sequence) => {
   if (sequence === ' ') return 'space';
-  if (sequence === '\u001b[C') return 'right';
-  if (sequence === '\u001b[D') return 'left';
+  if (sequence === '\u001b[C') return '\u2192'; // right
+  if (sequence === '\u001b[D') return '\u2190'; // left
+  // u2191 // up
+  // u2193 // down
   return sequence;
 };
 
-export default class AzertyMidiControllerService {
+export default class AzertyMidiControllerService extends EventEmitter {
   #config;
 
   #midiService;
@@ -29,6 +32,7 @@ export default class AzertyMidiControllerService {
   #globalService;
 
   constructor(config, { forceLocal }) {
+    super();
     log.green('start application');
 
     assert(config instanceof ConfigModel, new AzertyMidiControllerError('invalid config'));

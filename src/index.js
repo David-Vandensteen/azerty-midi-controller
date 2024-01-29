@@ -1,5 +1,5 @@
-import { AzertyMidiControllerService } from '#src/service/azerty_midi_controller';
+import { AzertyMidiControllerManager } from '#src/manager/azerty_midi_controller';
 
-export default AzertyMidiControllerService;
+export default AzertyMidiControllerManager;
 
-export { AzertyMidiControllerService };
+export { AzertyMidiControllerManager };
