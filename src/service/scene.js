@@ -1,4 +1,8 @@
+import assert from 'node:assert';
 import EventEmitter from 'events';
+import { NavigationSceneModel } from '#src/model/navigation/scene';
+import { SceneModel } from '#src/model/scene';
+import { MappingModel } from '#src/model/mapping';
 import { MappingService } from '#src/service/mapping';
 import { SceneError } from '#src/model/error';
 
@@ -9,6 +13,22 @@ export default class SceneService extends EventEmitter {
 
   constructor(scenes) {
     super();
+
+    assert(
+      scenes.every((scene) => scene instanceof SceneModel)
+      || scenes.every((scene) => scene instanceof NavigationSceneModel),
+      new SceneError('invalid scenes'),
+    );
+
+    if (scenes.every((scene) => scene instanceof SceneModel)) {
+      assert(
+        scenes.every(
+          (scene) => scene.mappings?.every((mapping) => mapping instanceof MappingModel),
+        ),
+        new SceneError('invalid mappings'),
+      );
+    }
+
     if (scenes === undefined) throw new SceneError('scenes is undefined');
     this.#scenes = scenes;
     this.#mappingService = new MappingService(scenes[0].mappings);
@@ -29,7 +49,7 @@ export default class SceneService extends EventEmitter {
   }
 
   set({ mappings }) {
-    if (mappings === undefined) throw new SceneError('mappings is undefined');
+    assert(mappings.every((mapping) => mapping instanceof MappingModel), new SceneError('invalid mappings'));
     this.#mappingService.set(mappings);
   }
 }

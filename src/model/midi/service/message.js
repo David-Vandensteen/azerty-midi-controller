@@ -2,17 +2,17 @@ import assert from 'node:assert';
 import { MidiTypeModel } from '#src/model/midi/type';
 import { MidiError } from '#src/model/error';
 
-export default class MidiServiceMessage {
+export default class MidiServiceMessageModel {
+  #type;
+
   controller;
 
   channel;
 
-  type;
-
   constructor(controller, channel, type, increment) {
     assert(typeof controller === 'number', new MidiError('invalid controller'));
     assert(typeof channel === 'number', new MidiError('invalid channel'));
-    assert(type === MidiTypeModel.analog || type === MidiTypeModel.digital, new MidiError('invalid type'));
+    assert(type instanceof MidiTypeModel, new MidiError('invalid type'));
 
     if (increment) {
       assert(typeof increment === 'number', new MidiError('invalid increment'));
@@ -20,18 +20,23 @@ export default class MidiServiceMessage {
 
     this.controller = controller;
     this.channel = channel;
-    this.type = type;
+    this.#type = type;
 
     if (increment) this.increment = increment;
+
+    Object.defineProperty(this, 'type', {
+      enumerable: true,
+      get: () => this.#type.toString(),
+    });
   }
 
   static deserialize(json) {
     try {
-      return new MidiServiceMessage(
-        json.controller,
-        json.channel,
-        json.type,
-        json.increment,
+      return new MidiServiceMessageModel(
+        json?.controller,
+        json?.channel,
+        MidiTypeModel.deserialize(json?.type?.toString()),
+        json?.increment,
       );
     } catch (err) {
       throw new MidiError(err);
@@ -39,4 +44,4 @@ export default class MidiServiceMessage {
   }
 }
 
-export { MidiServiceMessage };
+export { MidiServiceMessageModel };

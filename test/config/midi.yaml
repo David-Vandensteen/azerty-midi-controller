@@ -1,3 +1,5 @@
+name: test midi
+
 midi:
-  in: 'IAC AMC-IN'
-  out: 'IAC AMC-OUT'
+  in: IAC AMC-IN
+  out: IAC AMC-OUT

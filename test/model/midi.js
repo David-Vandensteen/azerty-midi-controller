@@ -2,17 +2,15 @@ import { MidiModel } from '#src/model/midi';
 
 const { log } = console;
 
-const midiOutObject = {
-  midiOut: 'midi out',
-};
+log(new MidiModel('midi out'));
 
+const midiOutObject = { out: 'midi out' };
 const midiOut = MidiModel.deserialize(midiOutObject);
 log(midiOut);
 
 const midiObject = {
-  midiOut: 'midi out',
-  midiIn: 'midi in',
+  out: 'midi out',
+  in: 'midi in',
 };
-
 const midi = MidiModel.deserialize(midiObject);
 log(midi);

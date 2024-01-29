@@ -1,6 +1,13 @@
+import assert from 'node:assert';
+import { ConfigModel } from '#src/model/config';
+import { NavigationModel } from '#src/model/navigation';
+import { GlobalModel } from '#src/model/global';
+import { SceneModel } from '#src/model/scene';
+import { MappingModel } from '#src/model/mapping';
 import { NetKeyboardServer } from 'net-keyboard';
-import { MidiServiceMessage } from '#src/model/midi/service/message';
+import { MidiServiceMessageModel } from '#src/model/midi/service/message';
 import { MidiService } from '#src/service/midi';
+import EventEmitter from 'node:events';
 import { SceneManager } from '#src/manager/scene';
 import { GlobalService } from '#src/service/global';
 import { AzertyMidiControllerError } from '#src/model/error';
@@ -8,12 +15,14 @@ import { log } from 'custom-console-log';
 
 const sanitizeSequence = (sequence) => {
   if (sequence === ' ') return 'space';
-  if (sequence === '\u001b[C') return 'right';
-  if (sequence === '\u001b[D') return 'left';
+  if (sequence === '\u001b[C') return '\u2192'; // right
+  if (sequence === '\u001b[D') return '\u2190'; // left
+  // u2191 // up
+  // u2193 // down
   return sequence;
 };
 
-export default class AzertyMidiControllerService {
+export default class AzertyMidiControllerService extends EventEmitter {
   #config;
 
   #midiService;
@@ -23,28 +32,32 @@ export default class AzertyMidiControllerService {
   #globalService;
 
   constructor(config, { forceLocal }) {
+    super();
     log.green('start application');
 
-    if (config === undefined) throw new AzertyMidiControllerError('config is undefined');
+    assert(config instanceof ConfigModel, new AzertyMidiControllerError('invalid config'));
     this.#config = config;
 
     this.#midiService = new MidiService(this.#config.midi);
 
-    if (this.#config.sceneNavigation && this.#config.scenes) {
+    if (this.#config.navigation && this.#config.scenes) {
+      assert(this.#config.navigation instanceof NavigationModel, new AzertyMidiControllerError('invalid navigation'));
+      assert(this.#config.scenes.every((scene) => scene instanceof SceneModel), new AzertyMidiControllerError('invalid scenes'));
       this.#sceneManager = new SceneManager(
-        this.#config.sceneNavigation,
+        this.#config.navigation,
         this.#config.scenes,
       );
       this.#listenSceneManager();
     }
 
     if (this.#config.global) {
+      assert(this.#config.global instanceof GlobalModel, new AzertyMidiControllerError('invalid global'));
       this.#globalService = new GlobalService(this.#config.global);
       this.#listenGlobalService();
     }
 
     this.#listenKeyboard({ forceLocal });
-    if (this.#config.sceneNavigation || this.#config.scenes) this.#setScene(this.#config.scenes[0]);
+    if (this.#config.navigation || this.#config.scenes) this.#setScene(this.#config.scenes[0]);
   }
 
   #handleKeyboard(message) {
@@ -58,20 +71,25 @@ export default class AzertyMidiControllerService {
 
   #listenSceneManager() {
     this.#sceneManager.on('scene', (scene) => {
+      assert(scene instanceof SceneModel, new AzertyMidiControllerError('invalid received scene'));
       log.dev('receive scene from scene manager', scene);
+
       this.#setScene(scene);
     });
 
     this.#sceneManager.on('mapping', (mapping) => {
+      assert(mapping instanceof MappingModel, new AzertyMidiControllerError('invalid received mapping'));
       log.dev('receive mapping from scene manager', mapping);
-      this.#midiService.send(MidiServiceMessage.deserialize(mapping));
+
+      this.#midiService.send(MidiServiceMessageModel.deserialize(mapping));
     });
   }
 
   #listenGlobalService() {
     this.#globalService.on('global', (mapping) => {
+      assert(mapping instanceof MappingModel, new AzertyMidiControllerError('invalid received mapping'));
       log.dev('receive mapping from global', mapping);
-      this.#midiService.send(MidiServiceMessage.deserialize(mapping));
+      this.#midiService.send(MidiServiceMessageModel.deserialize(mapping));
     });
   }
 
@@ -90,6 +108,8 @@ export default class AzertyMidiControllerService {
   }
 
   #setScene(scene) {
+    assert(scene instanceof SceneModel, new AzertyMidiControllerError('invalid scene'));
+
     if (scene.label) log.magenta('scene', scene.label);
     else log.magenta('scene', scene.id);
 
@@ -107,13 +127,13 @@ export default class AzertyMidiControllerService {
     if (this.#sceneManager) {
       this.#sceneManager.set(scene);
       log.info('');
-      this.#config.sceneNavigation.scenes.forEach((navigationScene) => {
+      this.#config.navigation.scenes.forEach((navigationScene) => {
         if (navigationScene.label) log.blue('scene', navigationScene.label, sanitizeSequence(navigationScene.sequence));
         else log.blue('scene', navigationScene.id, sanitizeSequence(navigationScene.sequence));
       });
       log.info('');
-      log.blue('scene previous', sanitizeSequence(this.#config.sceneNavigation.previous));
-      log.blue('scene next', sanitizeSequence(this.#config.sceneNavigation.next));
+      log.blue('scene previous', sanitizeSequence(this.#config.navigation.previous));
+      log.blue('scene next', sanitizeSequence(this.#config.navigation.next));
     }
   }
 

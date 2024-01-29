@@ -1,27 +1,27 @@
 import EventEmitter from 'events';
-import { SceneNavigationService } from '#src/service/scene_navigation';
+import { NavigationService } from '#src/service/navigation';
 import { SceneService } from '#src/service/scene';
-import { SceneNavigationError, SceneError } from '#src/model/error';
+import { NavigationError, SceneError } from '#src/model/error';
 
 export default class SceneManager extends EventEmitter {
-  #sceneNavigationService;
+  #navigationService;
 
   #sceneService;
 
-  constructor(sceneNavigation, scenes) {
+  constructor(navigation, scenes) {
     super();
-    if (sceneNavigation === undefined) throw new SceneNavigationError('sceneNavigation is undefined');
+    if (navigation === undefined) throw new NavigationError('sceneNavigation is undefined');
     if (scenes === undefined) throw new SceneError('scenes is undefined');
 
-    this.#sceneNavigationService = new SceneNavigationService(sceneNavigation, scenes);
+    this.#navigationService = new NavigationService(navigation, scenes);
     this.#sceneService = new SceneService(scenes);
 
-    this.#listenSceneNavigationService();
+    this.#listenNavigationService();
     this.#listenSceneService();
   }
 
-  #listenSceneNavigationService() {
-    this.#sceneNavigationService.on('scene-navigation', (scene) => {
+  #listenNavigationService() {
+    this.#navigationService.on('navigation', (scene) => {
       this.emit('scene', scene);
     });
   }
@@ -37,13 +37,13 @@ export default class SceneManager extends EventEmitter {
   }
 
   handle(sequence) {
-    this.#sceneNavigationService.handle(sequence);
+    this.#navigationService.handle(sequence);
     this.#sceneService.handle(sequence);
   }
 
   set(scene) {
-    if (scene === undefined) throw new SceneNavigationError('scene is undefined');
-    this.#sceneNavigationService.set(scene);
+    if (scene === undefined) throw new NavigationError('scene is undefined');
+    this.#navigationService.set(scene);
     this.#sceneService.set(scene);
   }
 }

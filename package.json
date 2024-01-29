@@ -1,6 +1,6 @@
 {
   "name": "azerty-midi-controller",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -10,7 +10,8 @@
     "serve": "nodemon --watch src -e js bin/azerty-midi-controller.js",
     "master": "node src/index.js -m master",
     "slave": "node src/index.js -m slave",
-    "lint": "eslint src test bin"
+    "lint": "eslint src test bin",
+    "package": "caxa --input . --output dist/azerty-midi-controller.exe -- {{caxa}}/node_modules/.bin/node.exe {{caxa}}/bin/azerty-midi-controller.js"
   },
   "author": "David Vandensteen <dvandensteen@gmail.com>",
   "license": "MIT",
@@ -20,11 +21,12 @@
   "dependencies": {
     "app-root-path": "^3.1.0",
     "arg": "^5.0.2",
+    "caxa": "^3.0.1",
     "custom-console-log": "github:David-Vandensteen/custom-console-log#release/1.0.0",
     "death": "^1.1.0",
     "easymidi": "^3.1.0",
     "fs-extra": "^11.2.0",
-    "midi-controller-store": "github:David-Vandensteen/midi-controller-store#release/1.0.0",
+    "midi-controller-store": "github:David-Vandensteen/midi-controller-store#release/1.1.0",
     "net-keyboard": "github:David-Vandensteen/net-keyboard#release/2.0.2",
     "package-reader": "github:David-Vandensteen/package-reader#release/1.0.0",
     "yaml": "^2.3.4"

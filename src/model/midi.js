@@ -2,24 +2,24 @@ import assert from 'node:assert';
 import { MidiError } from '#src/model/error';
 
 export default class MidiModel {
-  midiOut;
+  out;
 
-  constructor(midiOut, midiIn) {
-    assert(typeof midiOut === 'string', new MidiError('invalid midiOut'));
+  constructor(out, { in: midiIn } = {}) {
+    assert(typeof out === 'string', new MidiError('invalid midiOut'));
 
     if (midiIn) {
       assert(typeof midiIn === 'string', new MidiError('invalid midiIn'));
     }
 
-    this.midiOut = midiOut;
-    if (midiIn) this.midiIn = midiIn;
+    this.out = out;
+    if (midiIn) this.in = midiIn;
   }
 
   static deserialize(json) {
     try {
       return new MidiModel(
-        json.out,
-        json.in,
+        json?.out,
+        { in: json?.in },
       );
     } catch (err) {
       throw new MidiError(err);
