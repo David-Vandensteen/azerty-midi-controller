@@ -1,5 +1,9 @@
 import assert from 'node:assert';
 import { ConfigModel } from '#src/model/config';
+import { NavigationModel } from '#src/model/navigation';
+import { GlobalModel } from '#src/model/global';
+import { SceneModel } from '#src/model/scene';
+import { MappingModel } from '#src/model/mapping';
 import { NetKeyboardServer } from 'net-keyboard';
 import { MidiServiceMessage } from '#src/model/midi/service/message';
 import { MidiService } from '#src/service/midi';
@@ -33,6 +37,8 @@ export default class AzertyMidiControllerService {
     this.#midiService = new MidiService(this.#config.midi);
 
     if (this.#config.navigation && this.#config.scenes) {
+      assert(this.#config.navigation instanceof NavigationModel, new AzertyMidiControllerError('invalid navigation'));
+      assert(this.#config.scenes.every((scene) => scene instanceof SceneModel), new AzertyMidiControllerError('invalid scenes'));
       this.#sceneManager = new SceneManager(
         this.#config.navigation,
         this.#config.scenes,
@@ -41,6 +47,7 @@ export default class AzertyMidiControllerService {
     }
 
     if (this.#config.global) {
+      assert(this.#config.global instanceof GlobalModel, new AzertyMidiControllerError('invalid global'));
       this.#globalService = new GlobalService(this.#config.global);
       this.#listenGlobalService();
     }
@@ -60,12 +67,16 @@ export default class AzertyMidiControllerService {
 
   #listenSceneManager() {
     this.#sceneManager.on('scene', (scene) => {
+      assert(scene instanceof SceneModel, new AzertyMidiControllerError('invalid received scene'));
       log.dev('receive scene from scene manager', scene);
+
       this.#setScene(scene);
     });
 
     this.#sceneManager.on('mapping', (mapping) => {
+      assert(mapping instanceof MappingModel, new AzertyMidiControllerError('invalid received mapping'));
       log.dev('receive mapping from scene manager', mapping);
+
       this.#midiService.send(MidiServiceMessage.deserialize(mapping));
     });
   }
@@ -92,6 +103,8 @@ export default class AzertyMidiControllerService {
   }
 
   #setScene(scene) {
+    assert(scene instanceof SceneModel, new AzertyMidiControllerError('invalid scene'));
+
     if (scene.label) log.magenta('scene', scene.label);
     else log.magenta('scene', scene.id);
 

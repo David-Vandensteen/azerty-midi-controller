@@ -21,7 +21,7 @@ export default class MappingService extends EventEmitter {
   }
 
   set(mappings) {
-    if (mappings === undefined) throw new MappingError('mappings is undefined');
+    assert(mappings.every((mapping) => mapping instanceof MappingModel), new MappingError('invalid mappings'));
     this.#mappings = mappings;
   }
 }
