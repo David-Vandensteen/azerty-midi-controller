@@ -1,6 +1,9 @@
+import assert from 'node:assert';
 import easymidi from 'easymidi';
 import { MidiControllerStore } from 'midi-controller-store';
+import { MidiModel } from '#src/model/midi';
 import { MidiTypeModel } from '#src/model/midi/type';
+import { MidiServiceMessageModel } from '#src/model/midi/service/message';
 import { log } from 'custom-console-log';
 import { MidiError } from '#src/model/error';
 
@@ -12,6 +15,7 @@ export default class MidiService {
   #midiStore;
 
   constructor(midi) {
+    assert(midi instanceof MidiModel, new MidiError('invalid midi'));
     if (midi.out === undefined) throw new MidiError('invalid midiOutDeviceName');
 
     log.magenta('available midi outputs', easymidi.getOutputs());
@@ -45,9 +49,10 @@ export default class MidiService {
   }
 
   send(midiServiceMessage) {
-    if (midiServiceMessage.controller === undefined) throw new MidiError('invalid controller');
-    if (midiServiceMessage.channel === undefined) throw new MidiError('invalid channel');
-    if (midiServiceMessage.type.toString() === undefined) throw new MidiError('invalid type');
+    assert(midiServiceMessage instanceof MidiServiceMessageModel, new MidiError('invalid midi service message'));
+    // if (midiServiceMessage.controller === undefined) throw new MidiError('invalid controller');
+    // if (midiServiceMessage.channel === undefined) throw new MidiError('invalid channel');
+    // if (midiServiceMessage.type.toString() === undefined) throw new MidiError('invalid type');
 
     const currentValue = this.#midiStore.getValue(
       midiServiceMessage.controller,

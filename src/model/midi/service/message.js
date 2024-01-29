@@ -2,7 +2,7 @@ import assert from 'node:assert';
 import { MidiTypeModel } from '#src/model/midi/type';
 import { MidiError } from '#src/model/error';
 
-export default class MidiServiceMessage {
+export default class MidiServiceMessageModel {
   #type;
 
   controller;
@@ -32,7 +32,7 @@ export default class MidiServiceMessage {
 
   static deserialize(json) {
     try {
-      return new MidiServiceMessage(
+      return new MidiServiceMessageModel(
         json?.controller,
         json?.channel,
         MidiTypeModel.deserialize(json?.type?.toString()),
@@ -44,4 +44,4 @@ export default class MidiServiceMessage {
   }
 }
 
-export { MidiServiceMessage };
+export { MidiServiceMessageModel };

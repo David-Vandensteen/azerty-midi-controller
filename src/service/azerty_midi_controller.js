@@ -5,7 +5,7 @@ import { GlobalModel } from '#src/model/global';
 import { SceneModel } from '#src/model/scene';
 import { MappingModel } from '#src/model/mapping';
 import { NetKeyboardServer } from 'net-keyboard';
-import { MidiServiceMessage } from '#src/model/midi/service/message';
+import { MidiServiceMessageModel } from '#src/model/midi/service/message';
 import { MidiService } from '#src/service/midi';
 import EventEmitter from 'node:events';
 import { SceneManager } from '#src/manager/scene';
@@ -81,14 +81,15 @@ export default class AzertyMidiControllerService extends EventEmitter {
       assert(mapping instanceof MappingModel, new AzertyMidiControllerError('invalid received mapping'));
       log.dev('receive mapping from scene manager', mapping);
 
-      this.#midiService.send(MidiServiceMessage.deserialize(mapping));
+      this.#midiService.send(MidiServiceMessageModel.deserialize(mapping));
     });
   }
 
   #listenGlobalService() {
     this.#globalService.on('global', (mapping) => {
+      assert(mapping instanceof MappingModel, new AzertyMidiControllerError('invalid received mapping'));
       log.dev('receive mapping from global', mapping);
-      this.#midiService.send(MidiServiceMessage.deserialize(mapping));
+      this.#midiService.send(MidiServiceMessageModel.deserialize(mapping));
     });
   }
 
