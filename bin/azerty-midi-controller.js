@@ -2,6 +2,7 @@
 import { ConfigLoaderService } from '#src/service/config_loader';
 import { argService } from '#src/service/arg';
 import { AzertyMidiControllerManager } from '#src/index';
+import { ExpressService } from '#src/service/express';
 import ON_DEATH from 'death';
 
 const runApplication = () => {
@@ -10,6 +11,8 @@ const runApplication = () => {
     config,
     { forceLocal: argService.forceLocal },
   );
+
+  ExpressService.run();
 
   ON_DEATH(() => { application.dispose(); });
 };
