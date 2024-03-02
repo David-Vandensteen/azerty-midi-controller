@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: azerty-midi-controller API
+  description: API
+  license:
+    name: MIT
+  version: 1.0.0
+tags:
+  - name: Default
+paths:
+  /:
+    get:
+      tags:
+        - Default
+      summary: Welcome
+      description: |-
+        This is the root of the API. It returns a welcome message.
+      responses:
+        "200":
+          description: A welcome message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description::
+                    type: string
+                  version::
+                    type: string
+                  author:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      email:
+                        type: string
+                  license:
+                    type: string
