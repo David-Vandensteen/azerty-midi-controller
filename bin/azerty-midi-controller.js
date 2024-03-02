@@ -11,8 +11,9 @@ const runApplication = () => {
     config,
     { forceLocal: argService.forceLocal },
   );
+  console.log(config);
 
-  ExpressService.run();
+  ExpressService.run('127.0.0.1', config?.web?.api?.port);
 
   ON_DEATH(() => { application.dispose(); });
 };

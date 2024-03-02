@@ -11,6 +11,7 @@ export default class ConfigModel {
   midi;
 
   constructor(name, midi, {
+    web,
     port,
     navigation,
     scenes,
@@ -25,6 +26,11 @@ export default class ConfigModel {
     if (port) {
       assert(typeof port === 'number', new ConfigError('invalid port'));
       this.port = port;
+    }
+
+    if (web) {
+      assert(typeof web === 'object', new ConfigError('invalid web'));
+      this.web = web;
     }
 
     if (scenes) {
@@ -49,6 +55,7 @@ export default class ConfigModel {
         json?.name,
         MidiModel.deserialize(json?.midi),
         {
+          web: json?.web,
           port: json?.port,
           navigation: NavigationModel.deserialize(json?.navigation),
           scenes: json?.scenes?.map((scene) => SceneModel.deserialize(scene)),

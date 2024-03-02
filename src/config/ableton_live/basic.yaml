@@ -1,6 +1,11 @@
 name: ableton live basic
 port: 8080
 
+web:
+  api:
+    activated: on
+    port: 8081
+
 midi:
   in: IAC AMC-IN
   out: IAC AMC-OUT
