@@ -30,6 +30,7 @@
     "midi-controller-store": "github:David-Vandensteen/midi-controller-store#release/1.1.0",
     "net-keyboard": "github:David-Vandensteen/net-keyboard#release/2.0.2",
     "package-reader": "github:David-Vandensteen/package-reader#release/1.0.0",
+    "swagger-ui-express": "^5.0.0",
     "yaml": "^2.4.0"
   },
   "devDependencies": {
