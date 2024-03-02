@@ -25,6 +25,7 @@
     "custom-console-log": "github:David-Vandensteen/custom-console-log#release/1.0.0",
     "death": "^1.1.0",
     "easymidi": "^3.1.0",
+    "express": "^4.18.3",
     "fs-extra": "^11.2.0",
     "midi-controller-store": "github:David-Vandensteen/midi-controller-store#release/1.1.0",
     "net-keyboard": "github:David-Vandensteen/net-keyboard#release/2.0.2",
