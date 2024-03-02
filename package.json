@@ -29,13 +29,13 @@
     "midi-controller-store": "github:David-Vandensteen/midi-controller-store#release/1.1.0",
     "net-keyboard": "github:David-Vandensteen/net-keyboard#release/2.0.2",
     "package-reader": "github:David-Vandensteen/package-reader#release/1.0.0",
-    "yaml": "^2.3.4"
+    "yaml": "^2.4.0"
   },
   "devDependencies": {
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.29.1",
-    "nodemon": "^3.0.3"
+    "nodemon": "^3.1.0"
   }
 }
