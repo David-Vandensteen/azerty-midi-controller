@@ -1,6 +1,6 @@
 import assert from 'node:assert';
 import easymidi from 'easymidi';
-import { MidiControllerStore } from 'midi-controller-store';
+import { MidiControllerStore, MidiControllerStoreSocketIO } from 'midi-controller-store-socket-io';
 import { MidiModel } from '#src/model/midi';
 import { MidiTypeModel } from '#src/model/midi/type';
 import { MidiServiceMessageModel } from '#src/model/midi/service/message';
@@ -29,7 +29,10 @@ export default class MidiService {
       log.green('midi in connected', this.#midiInInstance.name);
     }
 
-    this.#midiStore = MidiControllerStore.getInstance();
+    this.#midiStore = (midi?.socketIO)
+      ? MidiControllerStoreSocketIO.getInstance()
+      : MidiControllerStore.getInstance();
+
     if (this.#midiInInstance) this.#listenMidi();
   }
 

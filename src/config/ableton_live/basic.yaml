@@ -4,6 +4,7 @@ port: 8080
 midi:
   in: IAC AMC-IN
   out: IAC AMC-OUT
+  socketIO: false
 
 navigation:
   next: d
